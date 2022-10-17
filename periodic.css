@@ -1,0 +1,79 @@
+html { 
+    width: 100%; 
+    font-family: sans-serif; 
+    background-color: #ccddee; 
+}
+
+
+h1 { 
+    font-size: 36px; 
+    text-align: center; 
+    color: #444; 
+    margin-bottom: -10px; 
+}
+
+h2 { 
+    font-size: 16px; 
+    text-align: center; 
+    color: #444; 
+    margin-bottom: 2px; 
+}
+
+h2 span { 
+    cursor: pointer; 
+    border-style: outset; 
+    color: #444;
+    border-width: 2px; 
+    padding: 2px; 
+    font-weight: normal; 
+}
+
+h2 span.on { 
+    border-style: inset; 
+    text-shadow: 1px 1px 0 #444; 
+}
+
+#periodic { 
+    margin: 0 auto;
+    border-spacing: 3px; 
+}
+
+@media (min-width: 701px) and (max-width: 800px)
+  { #periodic { border-spacing: 2px; } }
+@media (max-width: 700px) { #periodic { border-spacing: 1px; } }
+
+#periodic tr td { 
+    background-color: #f8f8f8; 
+    width: 32; 
+    height: 64;
+    cursor: pointer; 
+    border-style: outset; 
+    border-width: 3px; 
+}
+
+@media (max-width: 700px) { #periodic tr td { border-width: 2px; } }
+
+#periodic tr td.empty { 
+    background-color: transparent; 
+    cursor: auto;
+    border: none; 
+    text-align: left; 
+}
+
+
+#periodic tr td sup { 
+    font-size: 12px; 
+    display: block; 
+    text-align: center; 
+}
+
+#periodic tr td { 
+    font-size: 21px;
+    text-align: center; 
+    position: relative; 
+}
+
+#periodic tr td.sel { 
+    border-style: groove; 
+    text-shadow: 1px 1px 1px #222; 
+}

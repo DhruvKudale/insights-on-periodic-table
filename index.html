@@ -1,0 +1,186 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="periodic.css"></link>
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        <script src="periodic.js"></script>
+        <py-env>
+            - paths:
+              - /getData.py
+              - /listeners.py
+              - elements.json
+          </py-env>
+    </head>
+    </head>
+    <body>
+        <br><br>
+        <h1>Insights on Periodic Table</h1>
+        <br><br><br><br>
+        <py-script>
+            from js import document
+            from pyodide import create_proxy
+            from getData import getElement
+            from listeners import *
+        </py-script>
+        <table id="periodic">
+            <tr id="p1">
+                <td id="z1">
+                    <sup><py-script>getElement(1)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(1)['Symbol']</py-script>
+                </td>
+                <td class="empty"></td>
+                <td class="empty" id="desc" colspan="10" rowspan="3"></td>
+                <td class="empty" id="desc" colspan="5"></td>
+                <td id="z2">
+                    <sup><py-script>getElement(2)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(2)['Symbol']</py-script>
+                </td>
+            </tr>
+            <tr id="p2">
+                <td id="z3">
+                    <sup><py-script>getElement(3)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(3)['Symbol']</py-script>
+                </td>
+                <td id="z4">
+                    <sup><py-script>getElement(4)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(4)['Symbol']</py-script>
+                </td>
+                <td id="z5">
+                    <sup><py-script>getElement(5)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(5)['Symbol']</py-script>
+                </td>
+                <td id="z6">
+                    <sup><py-script>getElement(6)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(6)['Symbol']</py-script>
+                </td>
+                <td id="z7">
+                    <sup><py-script>getElement(7)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(7)['Symbol']</py-script>
+                </td>
+                <td id="z8">
+                    <sup><py-script>getElement(8)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(8)['Symbol']</py-script>
+                </td>
+                <td id="z9">
+                    <sup><py-script>getElement(9)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(9)['Symbol']</py-script>
+                </td>
+                <td id="z10">
+                    <sup><py-script>getElement(10)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(10)['Symbol']</py-script>
+                </td>
+            </tr>
+            <tr id="p3">
+                <td id="z11">
+                    <sup><py-script>getElement(11)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(11)['Symbol']</py-script>
+                </td>
+                <td id="z12">
+                    <sup><py-script>getElement(12)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(12)['Symbol']</py-script>
+                </td>
+                <td id="z13">
+                    <sup><py-script>getElement(13)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(13)['Symbol']</py-script>
+                </td>
+                <td id="z14">
+                    <sup><py-script>getElement(14)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(14)['Symbol']</py-script>
+                </td>
+                <td id="z15">
+                    <sup><py-script>getElement(15)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(15)['Symbol']</py-script>
+                </td>
+                <td id="z16">
+                    <sup><py-script>getElement(16)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(16)['Symbol']</py-script>
+                </td>
+                <td id="z17">
+                    <sup><py-script>getElement(17)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(17)['Symbol']</py-script>
+                </td>
+                <td id="z18">
+                    <sup><py-script>getElement(18)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(18)['Symbol']</py-script>
+                </td>
+            </tr>
+            <tr id="p4">
+                <td id="z19">
+                    <sup><py-script>getElement(19)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(19)['Symbol']</py-script>
+                </td>
+                <td id="z20">
+                    <sup><py-script>getElement(20)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(20)['Symbol']</py-script>
+                </td>
+                <td id="z21">
+                    <sup><py-script>getElement(21)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(21)['Symbol']</py-script>
+                </td>
+                <td id="z22">
+                    <sup><py-script>getElement(22)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(22)['Symbol']</py-script>
+                </td>
+                <td id="z23">
+                    <sup><py-script>getElement(23)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(23)['Symbol']</py-script>
+                </td>
+                <td id="z24">
+                    <sup><py-script>getElement(24)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(24)['Symbol']</py-script>
+                </td>
+                <td id="z25">
+                    <sup><py-script>getElement(25)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(25)['Symbol']</py-script>
+                </td>
+                <td id="z26">
+                    <sup><py-script>getElement(26)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(26)['Symbol']</py-script>
+                </td>
+                <td id="z27">
+                    <sup><py-script>getElement(27)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(27)['Symbol']</py-script>
+                </td>
+                <td id="z28">
+                    <sup><py-script>getElement(28)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(28)['Symbol']</py-script>
+                </td>
+                <td id="z29">
+                    <sup><py-script>getElement(29)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(29)['Symbol']</py-script>
+                </td>
+                <td id="z30">
+                    <sup><py-script>getElement(30)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(30)['Symbol']</py-script>
+                </td>
+                <td id="z31">
+                    <sup><py-script>getElement(31)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(31)['Symbol']</py-script>
+                </td>
+                <td id="z32">
+                    <sup><py-script>getElement(32)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(32)['Symbol']</py-script>
+                </td>
+                <td id="z33">
+                    <sup><py-script>getElement(33)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(33)['Symbol']</py-script>
+                </td>
+                <td id="z34">
+                    <sup><py-script>getElement(34)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(34)['Symbol']</py-script>
+                </td>
+                <td id="z35">
+                    <sup><py-script>getElement(35)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(35)['Symbol']</py-script>
+                </td>
+                <td id="z36">
+                    <sup><py-script>getElement(36)['AtomicNumber']</py-script></sup>
+                    <py-script>getElement(36)['Symbol']</py-script>
+                </td>
+            </tr>
+            <tr id="p5"></tr>
+            <tr id="p6"></tr>
+            <tr id="p7"></tr>
+        </table>
+    </body>
+</html>
