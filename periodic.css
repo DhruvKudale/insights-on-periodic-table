@@ -77,3 +77,7 @@ h2 span.on {
     border-style: groove; 
     text-shadow: 1px 1px 1px #222; 
 }
+
+#tile-caption {
+    font-size: x-small;
+}
