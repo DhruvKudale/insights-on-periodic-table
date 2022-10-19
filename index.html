@@ -17,8 +17,6 @@
         <h1>Insights on Periodic Table</h1>
         <br><br><br><br>
         <py-script>
-            from js import document
-            from pyodide import create_proxy
             from getData import getElement
         </py-script>
         <table id="periodic">
@@ -53,7 +51,16 @@
                         </table>
                     </div>
                 </td>
-                <td class="empty" id="desc" colspan="5"></td>
+                <td class="empty" colspan="5">
+                        <label for="property">Display Trends</label>
+                        <select name="property" id="property-dropdown">
+                          <option value="chemical-block">Chemical Block</option>
+                          <option value="standard-state">Standard State</option>
+                          <option value="melting-point">Melting Point</option>
+                          <option value="boiling-point">Boiling Point</option>
+                          <option value="boiling-point">Year Of Discovery</option>
+                        </select>
+                </td>
                 <td id="z2" onclick="loadTileDetails(2)">
                     <sup><py-script>getElement(2)['AtomicNumber']</py-script></sup>
                     <py-script>getElement(2)['Symbol']</py-script>
