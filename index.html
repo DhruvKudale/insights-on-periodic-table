@@ -15,11 +15,11 @@
     <body>
         <br><br>
         <h1>Insights on Periodic Table</h1>
-        <br><br><br><br>
+        <br><br>
         <py-script>
             from getData import getElement
         </py-script>
-        <table id="periodic">
+        <table class="periodic">
             <tr id="p1">
                 <td id="z1" onclick="loadTileDetails(1)">
                     <sup><py-script>getElement(1)['AtomicNumber']</py-script></sup>
@@ -28,32 +28,44 @@
                 </td>
                 <td class="empty"></td>
                 <td class="empty" id="desc" colspan="10" rowspan="3">
-                    <div id="desc-div">
+                <div>
                         <table id="desc-table" hidden>
-                            <tbody>
-                                <tr>
-                                    <th>Name</th>
-                                    <td id="desc-name"></td>
-                                </tr>
-                                <tr>
-                                    <th>Standard State</th>
-                                    <td id="desc-state"></td>
-                                </tr>
-                                <tr>
-                                    <th>Atomic Mass</th>
-                                    <td id="desc-atomic-mass"></td>
-                                </tr>
-                                <tr>
-                                    <th>Electron Configuration</th>
-                                    <td id="desc-electronic-configuration"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                <tbody>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td id="desc-name"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Standard State</td>
+                                        <td id="desc-state"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Atomic Mass</td>
+                                        <td id="desc-atomic-mass"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Electron Configuration</td>
+                                        <td id="desc-electronic-configuration"></td>
+                                    </tr>
+                                    <tr>
+                                            <td>Melting Point</td>
+                                            <td id="desc-melting-point"></td>
+                                    </tr>
+                                    <tr>
+                                            <td>Boiling Point</td>
+                                            <td id="desc-boiling-point"></td>
+                                    </tr>
+                                    <tr>
+                                            <td>Year of Discovery</td>
+                                            <td id="desc-year"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                </div>        
                 </td>
                 <td class="empty" colspan="5">
                         <label for="property">Display Trends</label>
-                        <select name="property" id="property-dropdown">
+                        <select name="property" id="property-dropdown" onclick="displayTrends()">
                           <option value="chemical-block">Chemical Block</option>
                           <option value="standard-state">Standard State</option>
                           <option value="melting-point">Melting Point</option>
@@ -597,7 +609,7 @@
             </td>
                 <td class="empty" colspan="2"></td>
             </tr>
-            <tr id="p8">
+            <tr id="p9">
                 <td class="empty" colspan="2"></td>
                 <td id="z90" onclick="loadTileDetails(90)">
                     <sup><py-script>getElement(90)['AtomicNumber']</py-script></sup>
