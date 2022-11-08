@@ -7,7 +7,7 @@
         <script type="text/javascript" src="periodic.js"></script>
         <py-env>
             - paths:
-              - /getData.py
+              - ./getData.py
               - elements.json
           </py-env>
     </head>
@@ -65,7 +65,7 @@
                 </td>
                 <td class="empty" colspan="5">
                         <label for="property">Display Trends</label>
-                        <select name="property" id="property-dropdown" onclick="displayTrends()">
+                        <select name="property" id="property-dropdown" onchange="displayTrends()">
                           <option value="chemical-block">Chemical Block</option>
                           <option value="standard-state">Standard State</option>
                           <option value="melting-point">Melting Point</option>
