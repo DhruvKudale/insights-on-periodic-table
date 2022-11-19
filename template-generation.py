@@ -2,8 +2,9 @@ import sys
 def generateTileTemplate(i):
     tile = "<td id=\"z" + str(i) + "\" onclick=\"loadTileDetails(" + str(i) + ")\">"
     tile = tile + "\n\t<sup><py-script>getElement(" + str(i) + ")['AtomicNumber']</py-script></sup>"
-    tile = tile +  "\n\t<py-script>getElement(" + str(i) + ")['Symbol']</py-script>"
-    tile = tile +  "\n\t<p id=\"tile-caption\"><py-script>getElement(" + str(i) + ")['Name']</py-script></p>"
+    tile = tile + "\n\t<py-script>getElement(" + str(i) + ")['Symbol']</py-script>"
+    tile = tile + "\n\t<p id=\"tile-caption\"><py-script>getElement(" + str(i) + ")['Name']</py-script></p>"
+    tile = tile + "\n\t<p id=\"tile-value" + str(i) + "\"></p>"
     tile = tile + "\n</td>"
     print(tile)
 

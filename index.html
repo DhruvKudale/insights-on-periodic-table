@@ -3,7 +3,7 @@
         <link rel="stylesheet" type="text/css" href="periodic.css"></link>
         <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
         <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-        <!-- <script type="text/javascript" src="elements.json"></script> -->
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
         <script type="text/javascript" src="periodic.js"></script>
         <py-env>
             - paths:
@@ -22,9 +22,10 @@
         <table class="periodic">
             <tr id="p1">
                 <td id="z1" onclick="loadTileDetails(1)">
-                    <sup><py-script>getElement(1)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(1)['Symbol']</py-script>
+                    <br><sup><py-script>getElement(1)['AtomicNumber']</py-script></sup>
+                    <p id="symbol"> <py-script>getElement(1)['Symbol']</py-script></p>
                     <p id="tile-caption"><py-script>getElement(1)['Name']</py-script></p>
+                    <p id="tile-value1"></p>
                 </td>
                 <td class="empty"></td>
                 <td class="empty" id="desc" colspan="10" rowspan="3">
@@ -34,30 +35,32 @@
                                     <tr>
                                         <td>Name</td>
                                         <td id="desc-name"></td>
+                                        <td>Symbol</td>
+                                        <td id="desc-symbol"></td>
                                     </tr>
                                     <tr>
-                                        <td>Standard State</td>
-                                        <td id="desc-state"></td>
-                                    </tr>
-                                    <tr>
+                                        <td>Atomic Number</td>
+                                        <td id="desc-z"></td>
                                         <td>Atomic Mass</td>
                                         <td id="desc-atomic-mass"></td>
                                     </tr>
                                     <tr>
+                                        <td>Chemical Block</td>
+                                        <td id="desc-block"></td>
+                                        <td>Standard State</td>
+                                        <td id="desc-state"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Melting Point</td>
+                                        <td id="desc-melting-point"></td>
+                                        <td>Boiling Point</td>
+                                        <td id="desc-boiling-point"></td>
+                                    </tr>
+                                    <tr>
                                         <td>Electron Configuration</td>
-                                        <td id="desc-electronic-configuration"></td>
-                                    </tr>
-                                    <tr>
-                                            <td>Melting Point</td>
-                                            <td id="desc-melting-point"></td>
-                                    </tr>
-                                    <tr>
-                                            <td>Boiling Point</td>
-                                            <td id="desc-boiling-point"></td>
-                                    </tr>
-                                    <tr>
-                                            <td>Year of Discovery</td>
-                                            <td id="desc-year"></td>
+                                        <td id="desc-electronic-configuration"></td>    
+                                        <td>Year of Discovery</td>
+                                        <td id="desc-year"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -70,467 +73,556 @@
                           <option value="standard-state">Standard State</option>
                           <option value="melting-point">Melting Point</option>
                           <option value="boiling-point">Boiling Point</option>
-                          <option value="boiling-point">Year Of Discovery</option>
+                          <option value="year">Year Of Discovery</option>
                         </select>
                 </td>
                 <td id="z2" onclick="loadTileDetails(2)">
-                    <sup><py-script>getElement(2)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(2)['Symbol']</py-script>
+                    <br><sup><py-script>getElement(2)['AtomicNumber']</py-script></sup>
+                    <p id="symbol"> <py-script>getElement(2)['Symbol']</py-script></p>
                     <p id="tile-caption"><py-script>getElement(2)['Name']</py-script></p>
+                    <p id="tile-value2"></p>
                 </td>
             </tr>
             <tr id="p2">
                 <td id="z3" onclick="loadTileDetails(3)">
-                    <sup><py-script>getElement(3)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(3)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(3)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(3)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(3)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(3)['Name']</py-script></p>
+                        <p id="tile-value3"></p>
                 </td>
                 <td id="z4" onclick="loadTileDetails(4)">
-                    <sup><py-script>getElement(4)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(4)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(4)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(4)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(4)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(4)['Name']</py-script></p>
+                        <p id="tile-value4"></p>
                 </td>
                 <td id="z5" onclick="loadTileDetails(5)">
-                    <sup><py-script>getElement(5)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(5)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(5)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(5)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(5)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(5)['Name']</py-script></p>
+                        <p id="tile-value5"></p>
                 </td>
                 <td id="z6" onclick="loadTileDetails(6)">
-                    <sup><py-script>getElement(6)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(6)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(6)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(6)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(6)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(6)['Name']</py-script></p>
+                        <p id="tile-value6"></p>
                 </td>
                 <td id="z7" onclick="loadTileDetails(7)">
-                    <sup><py-script>getElement(7)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(7)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(7)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(7)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(7)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(7)['Name']</py-script></p>
+                        <p id="tile-value7"></p>
                 </td>
                 <td id="z8" onclick="loadTileDetails(8)">
-                    <sup><py-script>getElement(8)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(8)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(8)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(8)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(8)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(8)['Name']</py-script></p>
+                        <p id="tile-value8"></p>
                 </td>
                 <td id="z9" onclick="loadTileDetails(9)">
-                    <sup><py-script>getElement(9)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(9)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(9)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(9)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(9)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(9)['Name']</py-script></p>
+                        <p id="tile-value9"></p>
                 </td>
                 <td id="z10" onclick="loadTileDetails(10)">
-                    <sup><py-script>getElement(10)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(10)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(10)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(10)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(10)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(10)['Name']</py-script></p>
+                        <p id="tile-value10"></p>
                 </td>
             </tr>
             <tr id="p3">
                 <td id="z11" onclick="loadTileDetails(11)">
-                    <sup><py-script>getElement(11)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(11)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(11)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(11)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(11)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(11)['Name']</py-script></p>
+                        <p id="tile-value11"></p>
                 </td>
                 <td id="z12" onclick="loadTileDetails(12)">
-                    <sup><py-script>getElement(12)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(12)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(12)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(12)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(12)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(12)['Name']</py-script></p>
+                        <p id="tile-value12"></p>
                 </td>
                 <td id="z13" onclick="loadTileDetails(13)">
-                    <sup><py-script>getElement(13)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(13)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(13)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(13)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(13)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(13)['Name']</py-script></p>
+                        <p id="tile-value13"></p>
                 </td>
                 <td id="z14" onclick="loadTileDetails(14)">
-                    <sup><py-script>getElement(14)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(14)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(14)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(14)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(14)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(14)['Name']</py-script></p>
+                        <p id="tile-value14"></p>
                 </td>
                 <td id="z15" onclick="loadTileDetails(15)">
-                    <sup><py-script>getElement(15)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(15)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(15)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(15)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(15)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(15)['Name']</py-script></p>
+                        <p id="tile-value15"></p>
                 </td>
                 <td id="z16" onclick="loadTileDetails(16)">
-                    <sup><py-script>getElement(16)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(16)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(16)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(16)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(16)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(16)['Name']</py-script></p>
+                        <p id="tile-value16"></p>
                 </td>
                 <td id="z17" onclick="loadTileDetails(17)">
-                    <sup><py-script>getElement(17)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(17)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(17)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(17)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(17)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(17)['Name']</py-script></p>
+                        <p id="tile-value17"></p>
                 </td>
                 <td id="z18" onclick="loadTileDetails(18)">
-                    <sup><py-script>getElement(18)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(18)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(18)['Name']</py-script></p>
+                        <br><sup><py-script>getElement(18)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(18)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(18)['Name']</py-script></p>
+                        <p id="tile-value18"></p>
                 </td>
             </tr>
             <tr id="p4">
                 <td id="z19" onclick="loadTileDetails(19)">
-                    <sup><py-script>getElement(19)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(19)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(19)['Name']</py-script></p>
-            </td>
-            <td id="z20" onclick="loadTileDetails(20)">
-                    <sup><py-script>getElement(20)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(20)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(20)['Name']</py-script></p>
-            </td>
-            <td id="z21" onclick="loadTileDetails(21)">
-                    <sup><py-script>getElement(21)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(21)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(21)['Name']</py-script></p>
-            </td>
-            <td id="z22" onclick="loadTileDetails(22)">
-                    <sup><py-script>getElement(22)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(22)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(22)['Name']</py-script></p>
-            </td>
-            <td id="z23" onclick="loadTileDetails(23)">
-                    <sup><py-script>getElement(23)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(23)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(23)['Name']</py-script></p>
-            </td>
-            <td id="z24" onclick="loadTileDetails(24)">
-                    <sup><py-script>getElement(24)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(24)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(24)['Name']</py-script></p>
-            </td>
-            <td id="z25" onclick="loadTileDetails(25)">
-                    <sup><py-script>getElement(25)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(25)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(25)['Name']</py-script></p>
-            </td>
-            <td id="z26" onclick="loadTileDetails(26)">
-                    <sup><py-script>getElement(26)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(26)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(26)['Name']</py-script></p>
-            </td>
-            <td id="z27" onclick="loadTileDetails(27)">
-                    <sup><py-script>getElement(27)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(27)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(27)['Name']</py-script></p>
-            </td>
-            <td id="z28" onclick="loadTileDetails(28)">
-                    <sup><py-script>getElement(28)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(28)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(28)['Name']</py-script></p>
-            </td>
-            <td id="z29" onclick="loadTileDetails(29)">
-                    <sup><py-script>getElement(29)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(29)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(29)['Name']</py-script></p>
-            </td>
-            <td id="z30" onclick="loadTileDetails(30)">
-                    <sup><py-script>getElement(30)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(30)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(30)['Name']</py-script></p>
-            </td>
-            <td id="z31" onclick="loadTileDetails(31)">
-                    <sup><py-script>getElement(31)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(31)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(31)['Name']</py-script></p>
-            </td>
-            <td id="z32" onclick="loadTileDetails(32)">
-                    <sup><py-script>getElement(32)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(32)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(32)['Name']</py-script></p>
-            </td>
-            <td id="z33" onclick="loadTileDetails(33)">
-                    <sup><py-script>getElement(33)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(33)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(33)['Name']</py-script></p>
-            </td>
-            <td id="z34" onclick="loadTileDetails(34)">
-                    <sup><py-script>getElement(34)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(34)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(34)['Name']</py-script></p>
-            </td>
-            <td id="z35" onclick="loadTileDetails(35)">
-                    <sup><py-script>getElement(35)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(35)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(35)['Name']</py-script></p>
-            </td>
-            <td id="z36" onclick="loadTileDetails(36)">
-                    <sup><py-script>getElement(36)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(36)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(36)['Name']</py-script></p>
-            </td>
+                        <br><sup><py-script>getElement(19)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(19)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(19)['Name']</py-script></p>
+                        <p id="tile-value19"></p>
+                </td>
+                <td id="z20" onclick="loadTileDetails(20)">
+                        <br><sup><py-script>getElement(20)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(20)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(20)['Name']</py-script></p>
+                        <p id="tile-value20"></p>
+                </td>
+                <td id="z21" onclick="loadTileDetails(21)">
+                        <br><sup><py-script>getElement(21)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(21)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(21)['Name']</py-script></p>
+                        <p id="tile-value21"></p>
+                </td>
+                <td id="z22" onclick="loadTileDetails(22)">
+                        <br><sup><py-script>getElement(22)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(22)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(22)['Name']</py-script></p>
+                        <p id="tile-value22"></p>
+                </td>
+                <td id="z23" onclick="loadTileDetails(23)">
+                        <br><sup><py-script>getElement(23)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(23)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(23)['Name']</py-script></p>
+                        <p id="tile-value23"></p>
+                </td>
+                <td id="z24" onclick="loadTileDetails(24)">
+                        <br><sup><py-script>getElement(24)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(24)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(24)['Name']</py-script></p>
+                        <p id="tile-value24"></p>
+                </td>
+                <td id="z25" onclick="loadTileDetails(25)">
+                        <br><sup><py-script>getElement(25)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(25)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(25)['Name']</py-script></p>
+                        <p id="tile-value25"></p>
+                </td>
+                <td id="z26" onclick="loadTileDetails(26)">
+                        <br><sup><py-script>getElement(26)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(26)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(26)['Name']</py-script></p>
+                        <p id="tile-value26"></p>
+                </td>
+                <td id="z27" onclick="loadTileDetails(27)">
+                        <br><sup><py-script>getElement(27)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(27)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(27)['Name']</py-script></p>
+                        <p id="tile-value27"></p>
+                </td>
+                <td id="z28" onclick="loadTileDetails(28)">
+                        <br><sup><py-script>getElement(28)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(28)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(28)['Name']</py-script></p>
+                        <p id="tile-value28"></p>
+                </td>
+                <td id="z29" onclick="loadTileDetails(29)">
+                        <br><sup><py-script>getElement(29)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(29)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(29)['Name']</py-script></p>
+                        <p id="tile-value29"></p>
+                </td>
+                <td id="z30" onclick="loadTileDetails(30)">
+                        <br><sup><py-script>getElement(30)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(30)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(30)['Name']</py-script></p>
+                        <p id="tile-value30"></p>
+                </td>
+                <td id="z31" onclick="loadTileDetails(31)">
+                        <br><sup><py-script>getElement(31)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(31)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(31)['Name']</py-script></p>
+                        <p id="tile-value31"></p>
+                </td>
+                <td id="z32" onclick="loadTileDetails(32)">
+                        <br><sup><py-script>getElement(32)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(32)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(32)['Name']</py-script></p>
+                        <p id="tile-value32"></p>
+                </td>
+                <td id="z33" onclick="loadTileDetails(33)">
+                        <br><sup><py-script>getElement(33)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(33)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(33)['Name']</py-script></p>
+                        <p id="tile-value33"></p>
+                </td>
+                <td id="z34" onclick="loadTileDetails(34)">
+                        <br><sup><py-script>getElement(34)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(34)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(34)['Name']</py-script></p>
+                        <p id="tile-value34"></p>
+                </td>
+                <td id="z35" onclick="loadTileDetails(35)">
+                        <br><sup><py-script>getElement(35)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(35)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(35)['Name']</py-script></p>
+                        <p id="tile-value35"></p>
+                </td>
+                <td id="z36" onclick="loadTileDetails(36)">
+                        <br><sup><py-script>getElement(36)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(36)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(36)['Name']</py-script></p>
+                        <p id="tile-value36"></p>
+                </td>
             </tr>
             <tr id="p5">
                 <td id="z37" onclick="loadTileDetails(37)">
-                    <sup><py-script>getElement(37)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(37)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(37)['Name']</py-script></p>
-            </td>
-            <td id="z38" onclick="loadTileDetails(38)">
-                    <sup><py-script>getElement(38)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(38)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(38)['Name']</py-script></p>
-            </td>
-            <td id="z39" onclick="loadTileDetails(39)">
-                    <sup><py-script>getElement(39)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(39)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(39)['Name']</py-script></p>
-            </td>
-            <td id="z40" onclick="loadTileDetails(40)">
-                    <sup><py-script>getElement(40)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(40)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(40)['Name']</py-script></p>
-            </td>
-            <td id="z41" onclick="loadTileDetails(41)">
-                    <sup><py-script>getElement(41)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(41)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(41)['Name']</py-script></p>
-            </td>
-            <td id="z42" onclick="loadTileDetails(42)">
-                    <sup><py-script>getElement(42)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(42)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(42)['Name']</py-script></p>
-            </td>
-            <td id="z43" onclick="loadTileDetails(43)">
-                    <sup><py-script>getElement(43)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(43)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(43)['Name']</py-script></p>
-            </td>
-            <td id="z44" onclick="loadTileDetails(44)">
-                    <sup><py-script>getElement(44)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(44)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(44)['Name']</py-script></p>
-            </td>
-            <td id="z45" onclick="loadTileDetails(45)">
-                    <sup><py-script>getElement(45)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(45)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(45)['Name']</py-script></p>
-            </td>
-            <td id="z46" onclick="loadTileDetails(46)">
-                    <sup><py-script>getElement(46)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(46)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(46)['Name']</py-script></p>
-            </td>
-            <td id="z47" onclick="loadTileDetails(47)">
-                    <sup><py-script>getElement(47)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(47)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(47)['Name']</py-script></p>
-            </td>
-            <td id="z48" onclick="loadTileDetails(48)">
-                    <sup><py-script>getElement(48)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(48)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(48)['Name']</py-script></p>
-            </td>
-            <td id="z49" onclick="loadTileDetails(49)">
-                    <sup><py-script>getElement(49)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(49)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(49)['Name']</py-script></p>
-            </td>
-            <td id="z50" onclick="loadTileDetails(50)">
-                    <sup><py-script>getElement(50)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(50)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(50)['Name']</py-script></p>
-            </td>
-            <td id="z51" onclick="loadTileDetails(51)">
-                    <sup><py-script>getElement(51)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(51)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(51)['Name']</py-script></p>
-            </td>
-            <td id="z52" onclick="loadTileDetails(52)">
-                    <sup><py-script>getElement(52)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(52)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(52)['Name']</py-script></p>
-            </td>
-            <td id="z53" onclick="loadTileDetails(53)">
-                    <sup><py-script>getElement(53)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(53)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(53)['Name']</py-script></p>
-            </td>
-            <td id="z54" onclick="loadTileDetails(54)">
-                    <sup><py-script>getElement(54)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(54)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(54)['Name']</py-script></p>
-            </td>
+                        <br><sup><py-script>getElement(37)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(37)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(37)['Name']</py-script></p>
+                        <p id="tile-value37"></p>
+                </td>
+                <td id="z38" onclick="loadTileDetails(38)">
+                        <br><sup><py-script>getElement(38)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(38)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(38)['Name']</py-script></p>
+                        <p id="tile-value38"></p>
+                </td>
+                <td id="z39" onclick="loadTileDetails(39)">
+                        <br><sup><py-script>getElement(39)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(39)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(39)['Name']</py-script></p>
+                        <p id="tile-value39"></p>
+                </td>
+                <td id="z40" onclick="loadTileDetails(40)">
+                        <br><sup><py-script>getElement(40)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(40)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(40)['Name']</py-script></p>
+                        <p id="tile-value40"></p>
+                </td>
+                <td id="z41" onclick="loadTileDetails(41)">
+                        <br><sup><py-script>getElement(41)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(41)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(41)['Name']</py-script></p>
+                        <p id="tile-value41"></p>
+                </td>
+                <td id="z42" onclick="loadTileDetails(42)">
+                        <br><sup><py-script>getElement(42)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(42)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(42)['Name']</py-script></p>
+                        <p id="tile-value42"></p>
+                </td>
+                <td id="z43" onclick="loadTileDetails(43)">
+                        <br><sup><py-script>getElement(43)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(43)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(43)['Name']</py-script></p>
+                        <p id="tile-value43"></p>
+                </td>
+                <td id="z44" onclick="loadTileDetails(44)">
+                        <br><sup><py-script>getElement(44)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(44)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(44)['Name']</py-script></p>
+                        <p id="tile-value44"></p>
+                </td>
+                <td id="z45" onclick="loadTileDetails(45)">
+                        <br><sup><py-script>getElement(45)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(45)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(45)['Name']</py-script></p>
+                        <p id="tile-value45"></p>
+                </td>
+                <td id="z46" onclick="loadTileDetails(46)">
+                        <br><sup><py-script>getElement(46)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(46)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(46)['Name']</py-script></p>
+                        <p id="tile-value46"></p>
+                </td>
+                <td id="z47" onclick="loadTileDetails(47)">
+                        <br><sup><py-script>getElement(47)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(47)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(47)['Name']</py-script></p>
+                        <p id="tile-value47"></p>
+                </td>
+                <td id="z48" onclick="loadTileDetails(48)">
+                        <br><sup><py-script>getElement(48)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(48)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(48)['Name']</py-script></p>
+                        <p id="tile-value48"></p>
+                </td>
+                <td id="z49" onclick="loadTileDetails(49)">
+                        <br><sup><py-script>getElement(49)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(49)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(49)['Name']</py-script></p>
+                        <p id="tile-value49"></p>
+                </td>
+                <td id="z50" onclick="loadTileDetails(50)">
+                        <br><sup><py-script>getElement(50)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(50)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(50)['Name']</py-script></p>
+                        <p id="tile-value50"></p>
+                </td>
+                <td id="z51" onclick="loadTileDetails(51)">
+                        <br><sup><py-script>getElement(51)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(51)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(51)['Name']</py-script></p>
+                        <p id="tile-value51"></p>
+                </td>
+                <td id="z52" onclick="loadTileDetails(52)">
+                        <br><sup><py-script>getElement(52)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(52)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(52)['Name']</py-script></p>
+                        <p id="tile-value52"></p>
+                </td>
+                <td id="z53" onclick="loadTileDetails(53)">
+                        <br><sup><py-script>getElement(53)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(53)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(53)['Name']</py-script></p>
+                        <p id="tile-value53"></p>
+                </td>
+                <td id="z54" onclick="loadTileDetails(54)">
+                        <br><sup><py-script>getElement(54)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(54)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(54)['Name']</py-script></p>
+                        <p id="tile-value54"></p>
+                </td>
             </tr>
             <tr id="p6">
                 <td id="z55" onclick="loadTileDetails(55)">
-                    <sup><py-script>getElement(55)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(55)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(55)['Name']</py-script></p>
-            </td>
-            <td id="z56" onclick="loadTileDetails(56)">
-                    <sup><py-script>getElement(56)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(56)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(56)['Name']</py-script></p>
-            </td>
-            <td id="z57" onclick="loadTileDetails(57)">
-                    <sup><py-script>getElement(57)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(57)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(57)['Name']</py-script></p>
-            </td>
-            <td id="z72" onclick="loadTileDetails(72)">
-                <sup><py-script>getElement(72)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(72)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(72)['Name']</py-script></p>
-            </td>
-            <td id="z73" onclick="loadTileDetails(73)">
-                <sup><py-script>getElement(73)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(73)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(73)['Name']</py-script></p>
-            </td>
-            <td id="z74" onclick="loadTileDetails(74)">
-                <sup><py-script>getElement(74)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(74)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(74)['Name']</py-script></p>
-            </td>
-            <td id="z75" onclick="loadTileDetails(75)">
-                <sup><py-script>getElement(75)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(75)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(75)['Name']</py-script></p>
-            </td>
-            <td id="z76" onclick="loadTileDetails(76)">
-                <sup><py-script>getElement(76)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(76)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(76)['Name']</py-script></p>
-            </td>
-            <td id="z77" onclick="loadTileDetails(77)">
-                <sup><py-script>getElement(77)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(77)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(77)['Name']</py-script></p>
-            </td>
-            <td id="z78" onclick="loadTileDetails(78)">
-                <sup><py-script>getElement(78)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(78)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(78)['Name']</py-script></p>
-            </td>
-            <td id="z79" onclick="loadTileDetails(79)">
-                <sup><py-script>getElement(79)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(79)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(79)['Name']</py-script></p>
-            </td>
-            <td id="z80" onclick="loadTileDetails(80)">
-                <sup><py-script>getElement(80)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(80)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(80)['Name']</py-script></p>
-            </td>
-            <td id="z81" onclick="loadTileDetails(81)">
-                <sup><py-script>getElement(81)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(81)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(81)['Name']</py-script></p>
-            </td>
-            <td id="z82" onclick="loadTileDetails(82)">
-                <sup><py-script>getElement(82)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(82)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(82)['Name']</py-script></p>
-            </td>
-            <td id="z83" onclick="loadTileDetails(83)">
-                <sup><py-script>getElement(83)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(83)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(83)['Name']</py-script></p>
-            </td>
-            <td id="z84" onclick="loadTileDetails(84)">
-                <sup><py-script>getElement(84)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(84)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(84)['Name']</py-script></p>
-            </td>
-            <td id="z85" onclick="loadTileDetails(85)">
-                <sup><py-script>getElement(85)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(85)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(85)['Name']</py-script></p>
-            </td>
-            <td id="z86" onclick="loadTileDetails(86)">
-                <sup><py-script>getElement(86)['AtomicNumber']</py-script></sup>
-                <py-script>getElement(86)['Symbol']</py-script>
-                <p id="tile-caption"><py-script>getElement(86)['Name']</py-script></p>
-            </td>
+                        <br><sup><py-script>getElement(55)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(55)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(55)['Name']</py-script></p>
+                        <p id="tile-value55"></p>
+                </td>
+                <td id="z56" onclick="loadTileDetails(56)">
+                        <br><sup><py-script>getElement(56)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(56)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(56)['Name']</py-script></p>
+                        <p id="tile-value56"></p>
+                </td>
+                <td id="z57" onclick="loadTileDetails(57)">
+                        <br><sup><py-script>getElement(57)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(57)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(57)['Name']</py-script></p>
+                        <p id="tile-value57"></p>
+                </td>
+                <td id="z72" onclick="loadTileDetails(72)">
+                        <br><sup><py-script>getElement(72)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(72)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(72)['Name']</py-script></p>
+                        <p id="tile-value72"></p>
+                </td>
+                <td id="z73" onclick="loadTileDetails(73)">
+                        <br><sup><py-script>getElement(73)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(73)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(73)['Name']</py-script></p>
+                        <p id="tile-value73"></p>
+                </td>
+                <td id="z74" onclick="loadTileDetails(74)">
+                        <br><sup><py-script>getElement(74)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(74)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(74)['Name']</py-script></p>
+                        <p id="tile-value74"></p>
+                </td>
+                <td id="z75" onclick="loadTileDetails(75)">
+                        <br><sup><py-script>getElement(75)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(75)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(75)['Name']</py-script></p>
+                        <p id="tile-value75"></p>
+                </td>
+                <td id="z76" onclick="loadTileDetails(76)">
+                        <br><sup><py-script>getElement(76)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(76)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(76)['Name']</py-script></p>
+                        <p id="tile-value76"></p>
+                </td>
+                <td id="z77" onclick="loadTileDetails(77)">
+                        <br><sup><py-script>getElement(77)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(77)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(77)['Name']</py-script></p>
+                        <p id="tile-value77"></p>
+                </td>
+                <td id="z78" onclick="loadTileDetails(78)">
+                        <br><sup><py-script>getElement(78)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(78)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(78)['Name']</py-script></p>
+                        <p id="tile-value78"></p>
+                </td>
+                <td id="z79" onclick="loadTileDetails(79)">
+                        <br><sup><py-script>getElement(79)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(79)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(79)['Name']</py-script></p>
+                        <p id="tile-value79"></p>
+                </td>
+                <td id="z80" onclick="loadTileDetails(80)">
+                        <br><sup><py-script>getElement(80)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(80)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(80)['Name']</py-script></p>
+                        <p id="tile-value80"></p>
+                </td>
+                <td id="z81" onclick="loadTileDetails(81)">
+                        <br><sup><py-script>getElement(81)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(81)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(81)['Name']</py-script></p>
+                        <p id="tile-value81"></p>
+                </td>
+                <td id="z82" onclick="loadTileDetails(82)">
+                        <br><sup><py-script>getElement(82)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(82)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(82)['Name']</py-script></p>
+                        <p id="tile-value82"></p>
+                </td>
+                <td id="z83" onclick="loadTileDetails(83)">
+                        <br><sup><py-script>getElement(83)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(83)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(83)['Name']</py-script></p>
+                        <p id="tile-value83"></p>
+                </td>
+                <td id="z84" onclick="loadTileDetails(84)">
+                        <br><sup><py-script>getElement(84)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(84)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(84)['Name']</py-script></p>
+                        <p id="tile-value84"></p>
+                </td>
+                <td id="z85" onclick="loadTileDetails(85)">
+                        <br><sup><py-script>getElement(85)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(85)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(85)['Name']</py-script></p>
+                        <p id="tile-value85"></p>
+                </td>
+                <td id="z86" onclick="loadTileDetails(86)">
+                        <br><sup><py-script>getElement(86)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(86)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(86)['Name']</py-script></p>
+                        <p id="tile-value86"></p>
+                </td>
             </tr>
 
             <tr id="p7">
                 <td id="z87" onclick="loadTileDetails(87)">
-                    <sup><py-script>getElement(87)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(87)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(87)['Name']</py-script></p>
-            </td>
-            <td id="z88" onclick="loadTileDetails(88)">
-                    <sup><py-script>getElement(88)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(88)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(88)['Name']</py-script></p>
-            </td>
-            <td id="z89" onclick="loadTileDetails(89)">
-                    <sup><py-script>getElement(89)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(89)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(89)['Name']</py-script></p>
-            </td>
-            <td id="z104" onclick="loadTileDetails(104)">
-                    <sup><py-script>getElement(104)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(104)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(104)['Name']</py-script></p>
-            </td>
-            <td id="z105" onclick="loadTileDetails(105)">
-                    <sup><py-script>getElement(105)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(105)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(105)['Name']</py-script></p>
-            </td>
-            <td id="z106" onclick="loadTileDetails(106)">
-                    <sup><py-script>getElement(106)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(106)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(106)['Name']</py-script></p>
-            </td>
-            <td id="z107" onclick="loadTileDetails(107)">
-                    <sup><py-script>getElement(107)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(107)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(107)['Name']</py-script></p>
-            </td>
-            <td id="z108" onclick="loadTileDetails(108)">
-                    <sup><py-script>getElement(108)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(108)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(108)['Name']</py-script></p>
-            </td>
-            <td id="z109" onclick="loadTileDetails(109)">
-                    <sup><py-script>getElement(109)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(109)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(109)['Name']</py-script></p>
-            </td>
-            <td id="z110" onclick="loadTileDetails(110)">
-                    <sup><py-script>getElement(110)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(110)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(110)['Name']</py-script></p>
-            </td>
-            <td id="z111" onclick="loadTileDetails(111)">
-                    <sup><py-script>getElement(111)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(111)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(111)['Name']</py-script></p>
-            </td>
-            <td id="z112" onclick="loadTileDetails(112)">
-                    <sup><py-script>getElement(112)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(112)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(112)['Name']</py-script></p>
-            </td>
-            <td id="z113" onclick="loadTileDetails(113)">
-                    <sup><py-script>getElement(113)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(113)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(113)['Name']</py-script></p>
-            </td>
-            <td id="z114" onclick="loadTileDetails(114)">
-                    <sup><py-script>getElement(114)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(114)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(114)['Name']</py-script></p>
-            </td>
-            <td id="z115" onclick="loadTileDetails(115)">
-                    <sup><py-script>getElement(115)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(115)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(115)['Name']</py-script></p>
-            </td>
-            <td id="z116" onclick="loadTileDetails(116)">
-                    <sup><py-script>getElement(116)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(116)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(116)['Name']</py-script></p>
-            </td>
-            <td id="z117" onclick="loadTileDetails(117)">
-                    <sup><py-script>getElement(117)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(117)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(117)['Name']</py-script></p>
-            </td>
-            <td id="z118" onclick="loadTileDetails(118)">
-                    <sup><py-script>getElement(118)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(118)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(118)['Name']</py-script></p>
-            </td>
+                        <br><sup><py-script>getElement(87)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(87)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(87)['Name']</py-script></p>
+                        <p id="tile-value87"></p>
+                </td>
+                <td id="z88" onclick="loadTileDetails(88)">
+                        <br><sup><py-script>getElement(88)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(88)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(88)['Name']</py-script></p>
+                        <p id="tile-value88"></p>
+                </td>
+                <td id="z89" onclick="loadTileDetails(89)">
+                        <br><sup><py-script>getElement(89)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(89)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(89)['Name']</py-script></p>
+                        <p id="tile-value89"></p>
+                </td>
+                <td id="z104" onclick="loadTileDetails(104)">
+                        <br><sup><py-script>getElement(104)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(104)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(104)['Name']</py-script></p>
+                        <p id="tile-value104"></p>
+                </td>
+                <td id="z105" onclick="loadTileDetails(105)">
+                        <br><sup><py-script>getElement(105)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(105)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(105)['Name']</py-script></p>
+                        <p id="tile-value105"></p>
+                </td>
+                <td id="z106" onclick="loadTileDetails(106)">
+                        <br><sup><py-script>getElement(106)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(106)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(106)['Name']</py-script></p>
+                        <p id="tile-value106"></p>
+                </td>
+                <td id="z107" onclick="loadTileDetails(107)">
+                        <br><sup><py-script>getElement(107)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(107)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(107)['Name']</py-script></p>
+                        <p id="tile-value107"></p>
+                </td>
+                <td id="z108" onclick="loadTileDetails(108)">
+                        <br><sup><py-script>getElement(108)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(108)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(108)['Name']</py-script></p>
+                        <p id="tile-value108"></p>
+                </td>
+                <td id="z109" onclick="loadTileDetails(109)">
+                        <br><sup><py-script>getElement(109)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(109)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(109)['Name']</py-script></p>
+                        <p id="tile-value109"></p>
+                </td>
+                <td id="z110" onclick="loadTileDetails(110)">
+                        <br><sup><py-script>getElement(110)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(110)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(110)['Name']</py-script></p>
+                        <p id="tile-value110"></p>
+                </td>
+                <td id="z111" onclick="loadTileDetails(111)">
+                        <br><sup><py-script>getElement(111)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(111)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(111)['Name']</py-script></p>
+                        <p id="tile-value111"></p>
+                </td>
+                <td id="z112" onclick="loadTileDetails(112)">
+                        <br><sup><py-script>getElement(112)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(112)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(112)['Name']</py-script></p>
+                        <p id="tile-value112"></p>
+                </td>
+                <td id="z113" onclick="loadTileDetails(113)">
+                        <br><sup><py-script>getElement(113)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(113)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(113)['Name']</py-script></p>
+                        <p id="tile-value113"></p>
+                </td>
+                <td id="z114" onclick="loadTileDetails(114)">
+                        <br><sup><py-script>getElement(114)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(114)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(114)['Name']</py-script></p>
+                        <p id="tile-value114"></p>
+                </td>
+                <td id="z115" onclick="loadTileDetails(115)">
+                        <br><sup><py-script>getElement(115)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(115)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(115)['Name']</py-script></p>
+                        <p id="tile-value115"></p>
+                </td>
+                <td id="z116" onclick="loadTileDetails(116)">
+                        <br><sup><py-script>getElement(116)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(116)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(116)['Name']</py-script></p>
+                        <p id="tile-value116"></p>
+                </td>
+                <td id="z117" onclick="loadTileDetails(117)">
+                        <br><sup><py-script>getElement(117)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(117)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(117)['Name']</py-script></p>
+                        <p id="tile-value117"></p>
+                </td>
+                <td id="z118" onclick="loadTileDetails(118)">
+                        <br><sup><py-script>getElement(118)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(118)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(118)['Name']</py-script></p>
+                        <p id="tile-value118"></p>
+                </td>
             </tr>
             <tr>
                 <td class="empty" colspan="18"></td>
@@ -538,149 +630,177 @@
             <tr id="p8">
                 <td class="empty" colspan="2"></td>
                 <td id="z58" onclick="loadTileDetails(58)">
-                    <sup><py-script>getElement(58)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(58)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(58)['Name']</py-script></p>
-            </td>
-            <td id="z59" onclick="loadTileDetails(59)">
-                    <sup><py-script>getElement(59)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(59)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(59)['Name']</py-script></p>
-            </td>
-            <td id="z60" onclick="loadTileDetails(60)">
-                    <sup><py-script>getElement(60)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(60)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(60)['Name']</py-script></p>
-            </td>
-            <td id="z61" onclick="loadTileDetails(61)">
-                    <sup><py-script>getElement(61)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(61)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(61)['Name']</py-script></p>
-            </td>
-            <td id="z62" onclick="loadTileDetails(62)">
-                    <sup><py-script>getElement(62)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(62)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(62)['Name']</py-script></p>
-            </td>
-            <td id="z63" onclick="loadTileDetails(63)">
-                    <sup><py-script>getElement(63)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(63)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(63)['Name']</py-script></p>
-            </td>
-            <td id="z64" onclick="loadTileDetails(64)">
-                    <sup><py-script>getElement(64)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(64)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(64)['Name']</py-script></p>
-            </td>
-            <td id="z65" onclick="loadTileDetails(65)">
-                    <sup><py-script>getElement(65)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(65)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(65)['Name']</py-script></p>
-            </td>
-            <td id="z66" onclick="loadTileDetails(66)">
-                    <sup><py-script>getElement(66)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(66)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(66)['Name']</py-script></p>
-            </td>
-            <td id="z67" onclick="loadTileDetails(67)">
-                    <sup><py-script>getElement(67)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(67)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(67)['Name']</py-script></p>
-            </td>
-            <td id="z68" onclick="loadTileDetails(68)">
-                    <sup><py-script>getElement(68)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(68)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(68)['Name']</py-script></p>
-            </td>
-            <td id="z69" onclick="loadTileDetails(69)">
-                    <sup><py-script>getElement(69)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(69)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(69)['Name']</py-script></p>
-            </td>
-            <td id="z70" onclick="loadTileDetails(70)">
-                    <sup><py-script>getElement(70)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(70)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(70)['Name']</py-script></p>
-            </td>
-            <td id="z71" onclick="loadTileDetails(71)">
-                    <sup><py-script>getElement(71)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(71)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(71)['Name']</py-script></p>
-            </td>
+                        <br><sup><py-script>getElement(58)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(58)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(58)['Name']</py-script></p>
+                        <p id="tile-value58"></p>
+                </td>
+                <td id="z59" onclick="loadTileDetails(59)">
+                        <br><sup><py-script>getElement(59)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(59)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(59)['Name']</py-script></p>
+                        <p id="tile-value59"></p>
+                </td>
+                <td id="z60" onclick="loadTileDetails(60)">
+                        <br><sup><py-script>getElement(60)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(60)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(60)['Name']</py-script></p>
+                        <p id="tile-value60"></p>
+                </td>
+                <td id="z61" onclick="loadTileDetails(61)">
+                        <br><sup><py-script>getElement(61)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(61)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(61)['Name']</py-script></p>
+                        <p id="tile-value61"></p>
+                </td>
+                <td id="z62" onclick="loadTileDetails(62)">
+                        <br><sup><py-script>getElement(62)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(62)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(62)['Name']</py-script></p>
+                        <p id="tile-value62"></p>
+                </td>
+                <td id="z63" onclick="loadTileDetails(63)">
+                        <br><sup><py-script>getElement(63)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(63)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(63)['Name']</py-script></p>
+                        <p id="tile-value63"></p>
+                </td>
+                <td id="z64" onclick="loadTileDetails(64)">
+                        <br><sup><py-script>getElement(64)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(64)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(64)['Name']</py-script></p>
+                        <p id="tile-value64"></p>
+                </td>
+                <td id="z65" onclick="loadTileDetails(65)">
+                        <br><sup><py-script>getElement(65)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(65)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(65)['Name']</py-script></p>
+                        <p id="tile-value65"></p>
+                </td>
+                <td id="z66" onclick="loadTileDetails(66)">
+                        <br><sup><py-script>getElement(66)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(66)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(66)['Name']</py-script></p>
+                        <p id="tile-value66"></p>
+                </td>
+                <td id="z67" onclick="loadTileDetails(67)">
+                        <br><sup><py-script>getElement(67)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(67)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(67)['Name']</py-script></p>
+                        <p id="tile-value67"></p>
+                </td>
+                <td id="z68" onclick="loadTileDetails(68)">
+                        <br><sup><py-script>getElement(68)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(68)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(68)['Name']</py-script></p>
+                        <p id="tile-value68"></p>
+                </td>
+                <td id="z69" onclick="loadTileDetails(69)">
+                        <br><sup><py-script>getElement(69)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(69)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(69)['Name']</py-script></p>
+                        <p id="tile-value69"></p>
+                </td>
+                <td id="z70" onclick="loadTileDetails(70)">
+                        <br><sup><py-script>getElement(70)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(70)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(70)['Name']</py-script></p>
+                        <p id="tile-value70"></p>
+                </td>
+                <td id="z71" onclick="loadTileDetails(71)">
+                        <br><sup><py-script>getElement(71)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(71)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(71)['Name']</py-script></p>
+                        <p id="tile-value71"></p>
+                </td>
                 <td class="empty" colspan="2"></td>
             </tr>
             <tr id="p9">
                 <td class="empty" colspan="2"></td>
                 <td id="z90" onclick="loadTileDetails(90)">
-                    <sup><py-script>getElement(90)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(90)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(90)['Name']</py-script></p>
-            </td>
-            <td id="z91" onclick="loadTileDetails(91)">
-                    <sup><py-script>getElement(91)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(91)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(91)['Name']</py-script></p>
-            </td>
-            <td id="z92" onclick="loadTileDetails(92)">
-                    <sup><py-script>getElement(92)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(92)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(92)['Name']</py-script></p>
-            </td>
-            <td id="z93" onclick="loadTileDetails(93)">
-                    <sup><py-script>getElement(93)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(93)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(93)['Name']</py-script></p>
-            </td>
-            <td id="z94" onclick="loadTileDetails(94)">
-                    <sup><py-script>getElement(94)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(94)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(94)['Name']</py-script></p>
-            </td>
-            <td id="z95" onclick="loadTileDetails(95)">
-                    <sup><py-script>getElement(95)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(95)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(95)['Name']</py-script></p>
-            </td>
-            <td id="z96" onclick="loadTileDetails(96)">
-                    <sup><py-script>getElement(96)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(96)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(96)['Name']</py-script></p>
-            </td>
-            <td id="z97" onclick="loadTileDetails(97)">
-                    <sup><py-script>getElement(97)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(97)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(97)['Name']</py-script></p>
-            </td>
-            <td id="z98" onclick="loadTileDetails(98)">
-                    <sup><py-script>getElement(98)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(98)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(98)['Name']</py-script></p>
-            </td>
-            <td id="z99" onclick="loadTileDetails(99)">
-                    <sup><py-script>getElement(99)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(99)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(99)['Name']</py-script></p>
-            </td>
-            <td id="z100" onclick="loadTileDetails(100)">
-                    <sup><py-script>getElement(100)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(100)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(100)['Name']</py-script></p>
-            </td>
-            <td id="z101" onclick="loadTileDetails(101)">
-                    <sup><py-script>getElement(101)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(101)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(101)['Name']</py-script></p>
-            </td>
-            <td id="z102" onclick="loadTileDetails(102)">
-                    <sup><py-script>getElement(102)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(102)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(102)['Name']</py-script></p>
-            </td>
-            <td id="z103" onclick="loadTileDetails(103)">
-                    <sup><py-script>getElement(103)['AtomicNumber']</py-script></sup>
-                    <py-script>getElement(103)['Symbol']</py-script>
-                    <p id="tile-caption"><py-script>getElement(103)['Name']</py-script></p>
-            </td>
+                        <br><sup><py-script>getElement(90)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(90)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(90)['Name']</py-script></p>
+                        <p id="tile-value90"></p>
+                </td>
+                <td id="z91" onclick="loadTileDetails(91)">
+                        <br><sup><py-script>getElement(91)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(91)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(91)['Name']</py-script></p>
+                        <p id="tile-value91"></p>
+                </td>
+                <td id="z92" onclick="loadTileDetails(92)">
+                        <br><sup><py-script>getElement(92)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(92)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(92)['Name']</py-script></p>
+                        <p id="tile-value92"></p>
+                </td>
+                <td id="z93" onclick="loadTileDetails(93)">
+                        <br><sup><py-script>getElement(93)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(93)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(93)['Name']</py-script></p>
+                        <p id="tile-value93"></p>
+                </td>
+                <td id="z94" onclick="loadTileDetails(94)">
+                        <br><sup><py-script>getElement(94)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(94)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(94)['Name']</py-script></p>
+                        <p id="tile-value94"></p>
+                </td>
+                <td id="z95" onclick="loadTileDetails(95)">
+                        <br><sup><py-script>getElement(95)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(95)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(95)['Name']</py-script></p>
+                        <p id="tile-value95"></p>
+                </td>
+                <td id="z96" onclick="loadTileDetails(96)">
+                        <br><sup><py-script>getElement(96)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(96)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(96)['Name']</py-script></p>
+                        <p id="tile-value96"></p>
+                </td>
+                <td id="z97" onclick="loadTileDetails(97)">
+                        <br><sup><py-script>getElement(97)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(97)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(97)['Name']</py-script></p>
+                        <p id="tile-value97"></p>
+                </td>
+                <td id="z98" onclick="loadTileDetails(98)">
+                        <br><sup><py-script>getElement(98)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(98)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(98)['Name']</py-script></p>
+                        <p id="tile-value98"></p>
+                </td>
+                <td id="z99" onclick="loadTileDetails(99)">
+                        <br><sup><py-script>getElement(99)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(99)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(99)['Name']</py-script></p>
+                        <p id="tile-value99"></p>
+                </td>
+                <td id="z100" onclick="loadTileDetails(100)">
+                        <br><sup><py-script>getElement(100)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(100)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(100)['Name']</py-script></p>
+                        <p id="tile-value100"></p>
+                </td>
+                <td id="z101" onclick="loadTileDetails(101)">
+                        <br><sup><py-script>getElement(101)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(101)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(101)['Name']</py-script></p>
+                        <p id="tile-value101"></p>
+                </td>
+                <td id="z102" onclick="loadTileDetails(102)">
+                        <br><sup><py-script>getElement(102)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(102)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(102)['Name']</py-script></p>
+                        <p id="tile-value102"></p>
+                </td>
+                <td id="z103" onclick="loadTileDetails(103)">
+                        <br><sup><py-script>getElement(103)['AtomicNumber']</py-script></sup>
+                        <p id="symbol"> <py-script>getElement(103)['Symbol']</py-script></p>
+                        <p id="tile-caption"><py-script>getElement(103)['Name']</py-script></p>
+                        <p id="tile-value103"></p>
+                </td>
                 <td class="empty" colspan="2"></td>
             </tr>
         </table>
