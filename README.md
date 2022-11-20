@@ -39,7 +39,7 @@ Python alongside standard HTML. Chroma is a JavaScript library used for colour c
 manipulations.
 
     | TOOL    |  PURPOSE or EXAMPLE                             |
-    | :-----: | :---------------------------------------------: |
+    |:-------:|:-----------------------------------------------:|
     | Git     |  For collaborative development                  |
     | IDE     |  Visual Studios and PyCharm                     |
     | Python3 |  For backend development and data preprocessing |
@@ -59,6 +59,6 @@ standard physical state, etc.
 
 
 # References
-[1] Kaggle Periodic table dataset. https://www.kaggle.com/datasets/psycon/periodic?select=periodic_table.csv.
-[2] PubChem National library overview. https://pubchem.ncbi.nlm.nih.gov/.
+[1] Kaggle Periodic table dataset. https://www.kaggle.com/datasets/psycon/periodic?select=periodic_table.csv. <br />
+[2] PubChem National library overview. https://pubchem.ncbi.nlm.nih.gov/. <br />
 [3] PubChem Periodic table dataset. https://pubchem.ncbi.nlm.nih.gov/rest/pug/periodictable/CSV/?response_type=display.
