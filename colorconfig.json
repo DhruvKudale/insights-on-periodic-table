@@ -1,0 +1,74 @@
+{
+    "phase" : {
+        "Solid":"#ed8a8a",
+        "Liquid":"#73a3f0",
+        "Gas":"#b8f073"
+    },
+    "Element Category" : {
+        "Other Nonmetal":"#e7f57f",
+        "Noble Gas":"#9785f2",
+        "Alkali Metal": "#7facf5",
+        "Alkaline Earth Metal":"#f57f7f",
+        "Metalloid":"#f285b8",
+        "Halogens":"#f5c47f",
+        "Post Transition Metal":"#7fd0f5",
+        "Transition Metal":"#7ff59d",
+        "Lanthanide":"#c7c3c3",
+        "Actinide":"#c4a484"
+    },
+    "Element Block" : {
+        "s":"#e7f57f",
+        "p":"#9785f2",
+        "d": "#7facf5",
+        "f":"#f285b8"
+    },
+    "Element Absolute Boiling Point" : {
+        "Unknown":"#c7c3c3",
+        "max_color":"#cf4545",
+        "min_color":"#f9e7e7",
+        "max": 5830,
+        "min": 0
+    },
+    "Element Electron Affinity" : {
+        "Unknown":"#c7c3c3",
+        "max_color":"#32bf34",
+        "min_color":"#ddf6de",
+        "max": 360,
+        "min": 0
+    },
+    "Element Valence" : {
+        "Unknown":"#c7c3c3",
+        "max_color":"#676fd7",
+        "min_color":"#cccff2",
+        "max": 8,
+        "min": 0
+    },
+    "Element Density" : {
+        "Unknown":"#c7c3c3",
+        "max_color":"#cf4545",
+        "min_color":"#f9e7e7",
+        "max": 25,
+        "min": 0
+    },
+    "Element Absolute Melting Point" : {
+        "Unknown":"#c7c3c3",
+        "max_color":"#32bf34",
+        "min_color":"#ddf6de",
+        "max": 3825,
+        "min": 0
+    },
+    "Element Year of Discovery" : {
+        "Unknown":"#c7c3c3",
+        "max_color":"#676fd7",
+        "min_color":"#cccff2",
+        "max": 2010,
+        "min": 1660
+    },
+    "Element Atomic Weight" : {
+        "Unknown":"#c7c3c3",
+        "max_color":"#676fd7",
+        "min_color":"#cccff2",
+        "max": 300,
+        "min": 1
+    }
+}

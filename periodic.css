@@ -91,36 +91,31 @@ p[id^='tile-value'] {
     font-size: x-large;
 }
 
-/*
-#periodic tr { 
-    margin: 0 auto;
-    max-height: 64;
-    border-spacing: 3px; 
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #234;
+  }
+  
+ul.topnav li {float: left;}
+  
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    /*no decoration so it does not look like link*/
+  }
+  
+ul.topnav li a:hover {
+    background-color: #123;
 }
 
-#periodic tr td { 
-    background-color: #f8f8f8; 
-    width: auto; 
-    height: auto;
-    cursor: pointer; 
-    border-style: outset; 
-    border-width: 3px; 
+#graph {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
 }
-
-#periodic tr td { 
-    font-size: 24px;
-    text-align: center; 
-    position: relative;
-    padding: 10px; 
-}
-
-#periodic tr td.sel { 
-    border-style: double; 
-    text-shadow: 1px 1px 1px #222; 
-}
-
-#tile-caption {
-    font-size: x-small;
-} 
-
-   */

@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="periodic.css"></link>
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
+        <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+        <script type="text/javascript" src="periodic.js"></script>
+        <py-env>
+            - numpy
+            - pandas
+            - plotly
+            - paths:
+              - ./plotGraphs.py
+              - elements.csv
+        </py-env>
+        <!-- <script defer src="https://pyscript.net/latest/pyscript.js"></script> -->
+    </head>
+    </head>
+    <body>
+        <ul class="topnav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="plot.html">Plot</a></li>
+                <li><a href="element.html">Element</a></li>
+        </ul>
+        <br><br>
+        <h1>Insights on Periodic Table</h1>
+        <br><br>
+        <label for="property">Select Property</label>
+        <select name="property" id="property-dropdown">
+          <option value="Element Electron Affinity">Element Electron Affinity</option>
+          <option value="Element Year of Discovery">Element Year of Discovery</option>
+          <option value="Element Abundance in Oceans">Element Abundance in Oceans</option>
+          <option value="van_der_waals_radius">van_der_waals_radius</option>
+          <option value="Element Block">Element Block</option>
+          <option value="phase">phase</option>
+          <option value="Radioactive">Radioactive</option>
+          <option value="Element Mass Magnetic Susceptibility">Element Mass Magnetic Susceptibility</option>
+          <option value="Element Magnetic Type">Element Magnetic Type</option>
+          <option value="Element Electrical Type">Element Electrical Type</option>
+          <option value="Element Category">Element Category</option>
+          <option value="Element Electrical Conductivity">Element Electrical Conductivity</option>
+          <option value="Element Valence">Element Valence</option>
+          <option value="Element Electronegativity (Pauling)">Element Electronegativity (Pauling)</option>
+          <option value="Element Ionization Energies">Element Ionization Energies</option>
+          <option value="Element Abundance in Earth's Crust">Element Abundance in Earth's Crust</option>
+          <option value="crystal_structure">crystal_structure</option>
+          <option value="Element Density">Element Density</option>
+          <option value="period">period</option>
+          <option value="Element Atomic Weight">Element Atomic Weight</option>
+          <option value="Element Absolute Boiling Point">Element Absolute Boiling Point</option>
+          <option value="Element Country of Discovery">Element Country of Discovery</option>
+          <option value="Element Absolute Melting Point">Element Absolute Melting Point</option>
+          <option value="Element Color">Element Color</option>        
+          <option value="Element Abundance in Humans">Element Abundance in Humans</option>
+        </select>
+        <label for="type">Display Trends</label>
+        <select name="type" id="type-dropdown">
+          <option value="line-graph">Line Graph</option>
+          <option value="bar-graph">Bar Graph</option>
+          <option value="sun-burst">Sun Burst</option>
+          <option value="scatter-plot">Scatter Plot</option>
+        </select>
+        <button type="button" id="go">Click Me!</button>
+        <br><br>
+        <div id="graph"></div>
+
+        <script type='text/javascript'>
+            function plot(graph, chart) {
+                var figure = JSON.parse(graph)
+                Plotly.newPlot(chart, figure, {});
+            }
+        </script>
+
+
+        <py-script output="graph">
+            from plotGraphs import *
+            from js import document
+            from pyodide import create_proxy
+            import json
+            import plotly
+            import js
+            
+            def plot_graph(feature):
+                g = Graphs(variable_name=feature)
+                type = document.getElementById("type-dropdown").value
+                if(type == "line-graph"):
+                  graph = g.line_plot()
+                elif(type == "bar-graph"):
+                  graph = g.bar_plot()
+                elif(type == "scatter-plot"):
+                  graph = g.scatter_plot()
+                else:
+                  graph = g.sunburst_plot()
+                graphJSON = json.dumps(graph, cls=plotly.utils.PlotlyJSONEncoder)
+                js.plot(graphJSON,"graph")
+            
+            def click(event):
+                choice = document.getElementById("property-dropdown").value
+                print(choice)
+                plot_graph(choice)
+    
+            def setup():
+                proxy = create_proxy(click)
+                e = document.getElementById("go")
+                e.addEventListener("click", proxy)
+            
+            setup()
+        </py-script>
+    </body>
+</html>

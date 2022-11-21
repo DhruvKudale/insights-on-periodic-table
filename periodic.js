@@ -5,78 +5,40 @@ fetch("./elements.json").then(response => {
 })
 .then(data => elementsdata = data);
 
+fetch("./colorconfig.json").then(response => {
+   return response.json();
+})
+.then(data => colordata = data);
+
 function loadTileDetails(i) {
     data = elementsdata[i-1];
-    document.getElementById("desc-name").innerHTML = data['Name'];
-    document.getElementById("desc-z").innerHTML = data['AtomicNumber'];
-    document.getElementById("desc-symbol").innerHTML = data['Symbol'];
-    document.getElementById("desc-state").innerHTML = data['StandardState'];
-    document.getElementById("desc-atomic-mass").innerHTML = data['AtomicMass'];
+    document.getElementById("desc-name").innerHTML = data['Element Name'];
+    document.getElementById("desc-z").innerHTML = data['Element Atomic Number'];
+    document.getElementById("desc-symbol").innerHTML = data['Element Symbol'];
+    document.getElementById("desc-state").innerHTML = data['phase'];
+    document.getElementById("desc-atomic-mass").innerHTML = data['Element Atomic Weight'];
     document.getElementById("desc-electronic-configuration").innerHTML = data['ElectronConfiguration'];
-    document.getElementById("desc-melting-point").innerHTML = data['MeltingPoint'];
-    document.getElementById("desc-boiling-point").innerHTML = data['BoilingPoint'];
-    document.getElementById("desc-block").innerHTML = data['GroupBlock'];
-    document.getElementById("desc-year").innerHTML = data['YearDiscovered'];
+    document.getElementById("desc-melting-point").innerHTML = data['Element Absolute Melting Point'];
+    document.getElementById("desc-boiling-point").innerHTML = data['Element Absolute Boiling Point'];
+    document.getElementById("desc-block").innerHTML = data['Element Category'];
+    document.getElementById("desc-year").innerHTML = data['Element Year of Discovery'];
  	document.getElementById("desc-table").removeAttribute("hidden")
 }
 
-function getColourFromState(state) {
-   if(state == "Solid")
-      return "#ed8a8a";
-   else if(state == "Liquid")
-      return "#73a3f0";
-   else if(state == "Gas")
-      return "#b8f073";
-   else 
-      return "#c7c3c3";
-}
-
-function getDisplayFromState(state) {
-   if(state == "Solid")
-      return "Solid";
-   else if(state == "Liquid")
-      return "Liquid";
-   else if(state == "Gas")
-      return "Gas";
-   else 
-      return "NA";
-}
-
-function getColourFromBlock(block) {
-   if(block == "Nonmetal")
-      return "#e7f57f";
-   else if(block == "Noble gas")
-      return "#9785f2";
-   else if(block == "Alkali metal")
-      return "#7facf5";
-   else if(block == "Alkaline earth metal")
-      return "#f57f7f";
-   else if(block == "Metalloid")
-      return "#f285b8";
-   else if(block == "Halogen")
-      return "#f5c47f";
-   else if(block == "Post-Transition Metal")
-      return "#7fd0f5";
-   else if(block == "Transition Metal")
-      return "#7ff59d";
-   else 
-      return "#c7c3c3";
-}
-
 function getDisplayFromGroup(block) {
-   if(block == "Nonmetal")
+   if(block == "Other Nonmetal")
       return "Non Metal";
-   else if(block == "Noble gas")
+   else if(block == "Noble Gas")
       return "Noble Gas";
-   else if(block == "Alkali metal")
+   else if(block == "Alkali Metal")
       return "Alkali Metal";
-   else if(block == "Alkaline earth metal")
+   else if(block == "Alkaline Earth Metal")
       return "Alkaline Earth Metal";
    else if(block == "Metalloid")
       return "Metalloid";
-   else if(block == "Halogen")
+   else if(block == "Halogens")
       return "Halogen";
-   else if(block == "Post-Transition Metal")
+   else if(block == "Post Transition Metal")
       return "Post-Transition";
    else if(block == "Transition Metal")
       return "Transition Metal";
@@ -85,98 +47,51 @@ function getDisplayFromGroup(block) {
    else if(block == "Lanthanide")
       return "Lanthanide";
    else 
-      return "NA";
+      return "Unknown";
 }
 
-function getColourFromYear(year) {
-   if(year == "Ancient") {
-      return "#d7d8f4";
+function getColourFromUtility(property, value) {
+   if (value == "Unknown" || value == "Ancient") {
+      return colordata[property]["Unknown"];
    }
-   else {
-      numyear = Number(year)
-      gradient = chroma.scale(['#cccff2', '#676fd7'])
-      oldest = 1600
-      recent = 2010
-      diff = recent - oldest
-      scaled = (numyear -1600) / diff;
-      return gradient(scaled);
-   }
-}
-
-function belongsTo(x, a, b) {
-   if (x < b && x >= a) {
-      return true;
-   }
-   else {
-      return false;
-   }
-}
-
-function getColourFromMP(value) {
-   if(value == "NA") {
-      return "#c7c3c3";
-   }
-   max_mp = 3825;
-   gradient = chroma.scale(['#ddf6de', '#32bf34']);
-   scaled = value/max_mp;
-   return gradient(scaled);
-}
-
-function getColourFromBP(value) {
-   if(value == "NA") {
-      return "#c7c3c3";
-   }
-   max_bp = 5830;
-   gradient = chroma.scale(['#f9e7e7', '#cf4545']);
-   scaled = value/max_bp;
-   return gradient(scaled);
+   max_val = colordata[property]["max"];
+   min_val = colordata[property]["min"];
+   max_col = colordata[property]["max_color"];
+   min_col = colordata[property]["min_color"];
+   gradient = chroma.scale([min_col, max_col]);
+   diff = max_val - min_val;
+   scaled_value = (value - min_val)/diff;
+   color = gradient(scaled_value);
+   return color;
 }
 
 function displayTrends() {
    dropdown = document.getElementById("property-dropdown")
-   propertyselcted = dropdown.value
+   property = dropdown.value
+   console.log(property);
    for(i=1; i<=118; i++) {
       data = elementsdata[i-1];
       elementid = "z" + String(i);
       displayelementid = "tile-value" + String(i);
       
-      //dropdown selection logic
-      if(propertyselcted == "standard-state") {
-         value = data['StandardState']
-         color = getColourFromState(value);
-         document.getElementById(displayelementid).innerHTML = getDisplayFromState(value);
-         document.getElementById(elementid).style.backgroundColor = color;
-      }
-      else if (propertyselcted == "melting-point") {
-         value = data['MeltingPoint']
-         color = getColourFromMP(value);
-         document.getElementById(displayelementid).innerHTML = value;
-         document.getElementById(elementid).style.backgroundColor = color;
-      }
-      else if (propertyselcted == "boiling-point") {
-         value = data['BoilingPoint']
-         color = getColourFromBP(value);
-         document.getElementById(displayelementid).innerHTML = value;
-         document.getElementById(elementid).style.backgroundColor = color;
-      }
-      else if (propertyselcted == "year") {
-         value = data['YearDiscovered']
-         color = getColourFromYear(value);
-         document.getElementById(displayelementid).innerHTML = value;
-         document.getElementById(elementid).style.backgroundColor = color;
-      }
-      else if (propertyselcted == "chemical-block") {
-         value = data['GroupBlock']
-         color = getColourFromBlock(value);
-         document.getElementById(displayelementid).innerHTML = getDisplayFromGroup(value);
-         document.getElementById(elementid).style.backgroundColor = color;
+      if(property == "Element Block" || property == "Element Category" || property == "phase") {
+         //discrete values
+         value = data[property]
+         if(property == "Element Category") {
+            value_to_display = getDisplayFromGroup(value);
+         }
+         else {
+            value_to_display = value;
+         }
+         document.getElementById(displayelementid).innerHTML = value_to_display;
+         document.getElementById(elementid).style.backgroundColor = colordata[property][value];
       }
       else {
-         value = data['GroupBlock']
-         color = getColourFromBlock(value);
-         document.getElementById(displayelementid).innerHTML = "";
+         //continuous values
+         value = data[property];
+         color = getColourFromUtility(property, value);
+         document.getElementById(displayelementid).innerHTML = value;
          document.getElementById(elementid).style.backgroundColor = color;
       }
-      
    }
 }

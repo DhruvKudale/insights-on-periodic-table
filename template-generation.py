@@ -13,7 +13,68 @@ def generatePeriodElements(l, u):
         generateTileTemplate(i)
 
 # Lower Atomic Number
-l = int(sys.argv[1])
+#l = int(sys.argv[1])
 # Upper Atomic Number
-u = int(sys.argv[2])
-generatePeriodElements(l, u)
+#u = int(sys.argv[2])
+#generatePeriodElements(l, u)
+
+def print_line(f):
+     print("<option value=\"" + f + "\">" + f + "</option>\n")
+
+
+allowed_for_line_graph = [ 'Element Ionization Energies', 'Element Abundance in Earth\'s Crust',
+       'Element Color', 'Element Abundance in Humans',
+       'Element Abundance in Oceans', 'Element Atomic Weight', 'Element Block',
+       'Element Absolute Boiling Point', 'Element Absolute Melting Point',
+       'Element Category', 'Element Country of Discovery',
+       'Element Year of Discovery', 'Element Density',
+       'Element Electrical Conductivity', 'Element Electrical Type',
+       'Element Electron Affinity',
+       'Element Electronegativity (Pauling)', 'Radioactive',
+       'Element Mass Magnetic Susceptibility', 'Element Magnetic Type',
+       'van_der_waals_radius',  'Element Valence',
+       'period', 'phase']
+
+
+allowed_for_bar_graph = [
+       'Element Ionization Energies', 'Element Abundance in Earth\'s Crust',
+       'Element Color', 'Element Abundance in Humans',
+       'Element Abundance in Oceans', 'Element Atomic Weight', 'Element Block',
+       'Element Absolute Boiling Point', 'Element Absolute Melting Point',
+       'Element Category', 'Element Country of Discovery',
+         'Element Density',
+       'Element Electrical Conductivity', 'Element Electrical Type',
+       'Element Electron Affinity',
+       'Element Electronegativity (Pauling)', 'Radioactive',
+       'Element Mass Magnetic Susceptibility', 'Element Magnetic Type',
+       'van_der_waals_radius', 'Element Valence', 
+]
+
+
+allowed_for_sunburst = [
+       'Element Color', 
+       'Element Category', 'Element Country of Discovery',
+       'Element Year of Discovery',  'Element Electrical Type',
+        'Radioactive',
+        'Element Magnetic Type',
+       'van_der_waals_radius', 'crystal_structure', 'Element Valence',
+       'period', 'phase' ]
+
+
+allowed_for_scatter =[
+       'Element Ionization Energies', 'Element Abundance in Earth\'s Crust',
+         'Element Abundance in Humans',
+       'Element Abundance in Oceans', 'Element Atomic Weight',  
+       'Element Absolute Boiling Point', 'Element Absolute Melting Point',
+       'Element Density',
+       'Element Electrical Conductivity', 
+       'Element Electron Affinity',
+       'Element Electronegativity (Pauling)',     
+]
+
+all_features = allowed_for_line_graph + allowed_for_bar_graph + allowed_for_sunburst + allowed_for_scatter
+features = list(set(all_features))
+
+for f in features:
+    print_line(f)
+
