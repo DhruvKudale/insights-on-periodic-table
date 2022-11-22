@@ -122,9 +122,9 @@ def guess_the_block(properties):
     file.close()
    
     probabilities = pd.DataFrame()
-    probabilities["proba"] = np.array((model.predict_proba([values]))*100).tolist()[0]
+    probabilities["Probability"] = np.array((model.predict_proba([values]))*100).tolist()[0]
     probabilities["Blocks"] = ["S", "P", "D", "F"]
-    fig = px.bar(probabilities, x='proba', y="Blocks", color='Blocks', title='Block Probability', hover_name='Blocks')
+    fig = px.bar(probabilities, x='Probability', y="Blocks", color='Blocks', title='Block Probability', hover_name='Blocks')
    
    
     return fig

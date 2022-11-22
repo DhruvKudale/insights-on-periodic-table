@@ -1,0 +1,169 @@
+html { 
+    width: 100%; 
+    font-family: sans-serif; 
+    background-color: #fff; 
+}
+
+h1 { 
+    font-size: 72px; 
+    text-align: center; 
+    color: #444; 
+    margin-bottom: -10px; 
+}
+
+h2 { 
+    font-size: 16px; 
+    text-align: center; 
+    color: #444; 
+    margin-bottom: 2px; 
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    height: 80%;
+    margin: auto;
+    table-layout: auto;
+    overflow-x: hidden;
+}
+
+.periodic td {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f8f8f8; 
+    height: 10%;
+    width: 5%;
+    cursor: pointer; 
+    border-style: outset;
+    white-space:nowrap;
+    font-size: small; 
+    margin: auto;
+    /*opacity: 0.8;*/
+}
+
+#desc-table td {
+    text-align: center;
+    padding: 1%;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    height: 100%;
+    width: 25%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #ccc; 
+    /*height: auto;*/
+    cursor: pointer; 
+    border-style: outset;
+    white-space:nowrap 
+
+}
+
+.periodic tr td.empty { 
+    background-color: transparent; 
+    cursor: auto;
+    border: none; 
+    text-align: left; 
+    width: 5%; 
+    height: 0%;
+}
+
+.periodic tr td sup { 
+    font-size: small; 
+    display: block; 
+    text-align: center; 
+}
+
+#tile-caption {
+    overflow-x: hidden;
+}
+
+p[id^='tile-value'] { 
+    overflow-x: hidden;
+    font-size: xx-small;
+}
+
+#symbol {
+    font-size: x-large;
+}
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #234;
+  }
+  
+ul.topnav li {float: left;}
+  
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    /*no decoration so it does not look like link*/
+  }
+  
+ul.topnav li a:hover {
+    background-color: #123;
+}
+
+#graph {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    float: none;
+}
+
+#go, #type, #prop, #ele {
+    background-color: #234;
+    color: white;
+    display: block;
+    padding: 2%;
+}
+
+#ele-table td {
+    text-align: center;
+    padding: 1%;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    width: 25%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #eee; 
+    /*height: auto;*/
+    cursor: pointer; 
+    border-style: outset;
+    white-space:nowrap 
+
+}
+
+#ele-model {
+    background-color: #eee;
+}
+
+model-viewer {
+    width:720px;
+}
+
+
+#desc-table tr td:nth-child(odd){ 
+	background: #ccc;
+}
+
+#desc-table tr td:nth-child(even){
+	background: #eee;
+}
+
+  
