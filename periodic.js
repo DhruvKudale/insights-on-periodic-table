@@ -1,11 +1,11 @@
 var elementsdata = []
 
-fetch("./elements.json").then(response => {
+fetch("./data/elements.json").then(response => {
    return response.json();
 })
 .then(data => elementsdata = data);
 
-fetch("./colorconfig.json").then(response => {
+fetch("./config/colorconfig.json").then(response => {
    return response.json();
 })
 .then(data => colordata = data);
