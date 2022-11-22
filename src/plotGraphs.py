@@ -181,7 +181,7 @@ class Graphs:
             return "Sun Burst Plot is not applicable for the given Feature"
  
         df_sunburst = get_data_variable_wise(variable_name)
-        fig = px.sunburst(df_sunburst, path=[variable_name, 'Element Block', 'Element Symbol'],width=900, height=900)
+        fig = px.sunburst(df_sunburst, path=[variable_name, 'Element Block', 'Element Symbol'],width=1000, height=1000)
         return fig
     
     

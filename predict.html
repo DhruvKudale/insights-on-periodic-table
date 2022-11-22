@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles/periodic.css"></link>
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
+        <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+        <script type="text/javascript" src="periodic.js"></script>
+        <py-env>
+            - numpy
+            - pandas
+            - plotly
+            - scikit-learn
+            - paths:
+              - ./src/predictBlock.py
+              - ./model/trained_model_rfc.obj
+        </py-env>
+    </head>
+    </head>
+    <body>
+        <ul class="topnav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="plot.html">Plot</a></li>
+                <li><a href="element.html">Element</a></li>
+                <li><a href="predict.html">Predict</a></li>
+        </ul>
+        
+        <br><br>
+        <div>
+          <div class="container" width="90%">
+            <button type="button" id="prop" disabled> Select Phase </button>
+          <select name="property" id="phase-dropdown">
+            <option value="Solid">Solid</option>
+            <option value="Liquid">Liquid</option>
+            <option value="Gas">Gas</option>
+          </select>
+          &nbsp; &nbsp; &nbsp;
+          <button type="button" id="type" disabled>Select Color </button>
+          <select name="type" id="color-dropdown">
+            <option value="Colorless">Colorless</option>
+            <option value="Silver">Silver</option>
+            <option value="SlateGray">Slate Gray</option>
+            <option value="Black">Black</option>
+            <option value="Gray">Gray</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Copper">Copper</option>
+            <option value="Red">Red</option>
+            <option value="Gold">Gold</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+          &nbsp; &nbsp; &nbsp;
+          <button type="button" id="type" disabled>Select Electrical Type </button>
+          <select name="type" id="electrical-dropdown">
+            <option value="Conductor">Conductor</option>
+            <option value="Insulator">Insulator</option>
+            <option value="Semiconductor">Semiconductor</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+          &nbsp; &nbsp; &nbsp;       
+        </div>
+        <br><br>
+        <div class="container" width="90%">
+            <button type="button" id="type" disabled>Select Radioactivity</button>
+          <select name="type" id="radio-dropdown">
+            <option value="Highly Unstable">Highly Unstable</option>
+            <option value="Slightly Unstable">Slightly Unstable</option>
+            <option value="Stable">Stable</option>
+            <option value="Unstable">Unstable</option>
+          </select>
+          &nbsp; &nbsp; &nbsp;
+          <button type="button" id="prop" disabled> Select Crystal Structure </button>
+          <select name="property" id="crystal-dropdown">
+            <option value="body-centered cubic (bcc)">Body-Centered Cubic</option>
+            <option value="cubic">Cubic</option>
+            <option value="double hexagonal close-packed (dhcp)">Double Hexagonal Close-Packed</option>
+            <option value="face-centered cubic (fcc)">Face-Centered Cubic</option>
+            <option value="face-centered diamond-cubic">Face-Centered Diamond-Cubic</option>
+            <option value="hexagonal">Hexagonal</option>
+            <option value="hexagonal close-packed (hcp)">Hexagonal Close-Packed</option>
+            <option value="monoclinic">Monoclinic</option>
+            <option value="orthorhombic">Orthorhombic</option>
+            <option value="rhombohedral">Rhombohedral</option>
+            <option value="tetragonal">Tetragonal</option>
+            <option value="Unknown">Unknown</option>    
+          </select>
+          &nbsp; &nbsp; &nbsp;
+          <button type="button" id="go">Predict</button>
+          <br><br><br>
+        </div>
+        <br><br><br>
+        <div id="graph"></div>
+        <br><br><br>
+        </div>
+       
+        <script type='text/javascript'>
+            function plot(graph, chart) {
+                var figure = JSON.parse(graph)
+                Plotly.newPlot(chart, figure, {});
+            }
+
+            function removeplot() {
+              document.getElementById("graph").innerHTML = "";
+            }
+
+            function alerterror(message) {
+              alert(message);
+            }
+        </script>
+
+
+        <py-script output="graph">
+            from predictBlock import *
+            from js import document
+            from pyodide import create_proxy
+            import json
+            import plotly
+            import js
+            
+            def plot_graph(x1, x2, x3, x4,x5):
+                fig = guess_the_block([x1, x2, x3, x4, x5])
+                graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+                js.plot(graphJSON,"graph")
+            
+            def click(event):
+                phase = document.getElementById("phase-dropdown").value
+                radio = document.getElementById("radio-dropdown").value
+                color = document.getElementById("color-dropdown").value
+                elec = document.getElementById("electrical-dropdown").value
+                crystal = document.getElementById("crystal-dropdown").value
+                plot_graph(phase, radio, color, elec, crystal)
+    
+            def setup():
+                proxy = create_proxy(click)
+                e = document.getElementById("go")
+                e.addEventListener("click", proxy)
+            
+            setup()
+        </py-script>
+    </body>
+</html>
