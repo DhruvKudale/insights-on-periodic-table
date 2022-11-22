@@ -23,52 +23,67 @@
                 <li><a href="plot.html">Plot</a></li>
                 <li><a href="element.html">Element</a></li>
         </ul>
+        
         <br><br>
-        <h1>Insights on Periodic Table</h1>
-        <br><br>
-        <label for="property">Select Property</label>
-        <select name="property" id="property-dropdown">
-          <option value="Element Electron Affinity">Element Electron Affinity</option>
-          <option value="Element Year of Discovery">Element Year of Discovery</option>
-          <option value="Element Abundance in Oceans">Element Abundance in Oceans</option>
-          <option value="van_der_waals_radius">van_der_waals_radius</option>
-          <option value="Element Block">Element Block</option>
-          <option value="phase">phase</option>
-          <option value="Radioactive">Radioactive</option>
-          <option value="Element Mass Magnetic Susceptibility">Element Mass Magnetic Susceptibility</option>
-          <option value="Element Magnetic Type">Element Magnetic Type</option>
-          <option value="Element Electrical Type">Element Electrical Type</option>
-          <option value="Element Category">Element Category</option>
-          <option value="Element Electrical Conductivity">Element Electrical Conductivity</option>
-          <option value="Element Valence">Element Valence</option>
-          <option value="Element Electronegativity (Pauling)">Element Electronegativity (Pauling)</option>
-          <option value="Element Ionization Energies">Element Ionization Energies</option>
-          <option value="Element Abundance in Earth's Crust">Element Abundance in Earth's Crust</option>
-          <option value="crystal_structure">crystal_structure</option>
-          <option value="Element Density">Element Density</option>
-          <option value="period">period</option>
-          <option value="Element Atomic Weight">Element Atomic Weight</option>
-          <option value="Element Absolute Boiling Point">Element Absolute Boiling Point</option>
-          <option value="Element Country of Discovery">Element Country of Discovery</option>
-          <option value="Element Absolute Melting Point">Element Absolute Melting Point</option>
-          <option value="Element Color">Element Color</option>        
-          <option value="Element Abundance in Humans">Element Abundance in Humans</option>
-        </select>
-        <label for="type">Display Trends</label>
-        <select name="type" id="type-dropdown">
-          <option value="line-graph">Line Graph</option>
-          <option value="bar-graph">Bar Graph</option>
-          <option value="sun-burst">Sun Burst</option>
-          <option value="scatter-plot">Scatter Plot</option>
-        </select>
-        <button type="button" id="go">Click Me!</button>
-        <br><br>
+        <div>
+          <div class="container" width="90%">
+            <button type="button" id="prop" disabled> Select Property >></button>
+          <select name="property" id="property-dropdown">
+            <option value="Element Electron Affinity">Element Electron Affinity</option>
+            <option value="Element Year of Discovery">Element Year of Discovery</option>
+            <option value="Element Abundance in Oceans">Element Abundance in Oceans</option>
+            <option value="van_der_waals_radius">van_der_waals_radius</option>
+            <option value="Element Block">Element Block</option>
+            <option value="phase">phase</option>
+            <option value="Radioactive">Radioactive</option>
+            <option value="Element Mass Magnetic Susceptibility">Element Mass Magnetic Susceptibility</option>
+            <option value="Element Magnetic Type">Element Magnetic Type</option>
+            <option value="Element Electrical Type">Element Electrical Type</option>
+            <option value="Element Category">Element Category</option>
+            <option value="Element Electrical Conductivity">Element Electrical Conductivity</option>
+            <option value="Element Valence">Element Valence</option>
+            <option value="Element Electronegativity (Pauling)">Element Electronegativity (Pauling)</option>
+            <option value="Element Ionization Energies">Element Ionization Energies</option>
+            <option value="Element Abundance in Earth's Crust">Element Abundance in Earth's Crust</option>
+            <option value="crystal_structure">crystal_structure</option>
+            <option value="Element Density">Element Density</option>
+            <option value="period">period</option>
+            <option value="Element Atomic Weight">Element Atomic Weight</option>
+            <option value="Element Absolute Boiling Point">Element Absolute Boiling Point</option>
+            <option value="Element Country of Discovery">Element Country of Discovery</option>
+            <option value="Element Absolute Melting Point">Element Absolute Melting Point</option>
+            <option value="Element Color">Element Color</option>        
+            <option value="Element Abundance in Humans">Element Abundance in Humans</option>
+          </select>
+          &nbsp; &nbsp; &nbsp;
+          <button type="button" id="type" disabled>Select Type Of Graph >></button>
+          <select name="type" id="type-dropdown">
+            <option value="line-graph">Line Graph</option>
+            <option value="bar-graph">Bar Graph</option>
+            <option value="sun-burst">Sun Burst</option>
+            <option value="scatter-plot">Scatter Plot</option>
+          </select>
+          &nbsp; &nbsp; &nbsp;
+          <button type="button" id="go">Plot</button>
+          <br><br><br>
+        </div>
+        <br><br><br>
         <div id="graph"></div>
-
+        <br><br><br>
+        </div>
+       
         <script type='text/javascript'>
             function plot(graph, chart) {
                 var figure = JSON.parse(graph)
                 Plotly.newPlot(chart, figure, {});
+            }
+
+            function removeplot() {
+              document.getElementById("graph").innerHTML = "";
+            }
+
+            function alerterror(message) {
+              alert(message);
             }
         </script>
 
@@ -92,6 +107,10 @@
                   graph = g.scatter_plot()
                 else:
                   graph = g.sunburst_plot()
+                if "not applicable" in graph:
+                  js.alerterror("Oops! Cannot create corresponding graph. Please try a different graph or feature.")
+                  js.removeplot()
+                  return
                 graphJSON = json.dumps(graph, cls=plotly.utils.PlotlyJSONEncoder)
                 js.plot(graphJSON,"graph")
             

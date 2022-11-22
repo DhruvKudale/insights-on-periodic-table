@@ -119,3 +119,41 @@ ul.topnav li a:hover {
     margin-right: auto;
     width: 90%;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    float: none;
+}
+
+#go, #type, #prop, #ele {
+    background-color: #234;
+    color: white;
+    display: block;
+    padding: 2%;
+}
+
+#ele-table td {
+    text-align: center;
+    padding: 1%;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    width: 25%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #ccc; 
+    /*height: auto;*/
+    cursor: pointer; 
+    border-style: outset;
+    white-space:nowrap 
+
+}
+
+#ele-model {
+    background-color: #ccc;
+}
+
+model-viewer{
+    width:720px;
+}
+  

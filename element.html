@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="periodic.css"></link>
         <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
         <!-- <script defer src="https://pyscript.net/alpha/pyscript.js"></script> -->
         <script defer src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
         <script type="text/javascript" src="periodic.js"></script>
@@ -14,7 +15,217 @@
                 <li><a href="element.html">Element</a></li>
         </ul>
         <br><br>
-        <h1>Element wise view</h1>
-        <br><br>
+        <div>
+            <div class="container" width="90%">
+                <button type="button" id="ele" disabled> Select Element >></button>
+                <select name="element" id="ele-dropdown" onchange="loadElementData()">
+                    <option value="1">1 - Hydrogen</option>
+                    <option value="2">2 - Helium</option>
+                    <option value="3">3 - Lithium</option>
+                    <option value="4">4 - Beryllium</option>
+                    <option value="5">5 - Boron</option>
+                    <option value="6">6 - Carbon</option>
+                    <option value="7">7 - Nitrogen</option>
+                    <option value="8">8 - Oxygen</option>
+                    <option value="9">9 - Fluorine</option>
+                    <option value="10">10 - Neon</option>
+                    <option value="11">11 - Sodium</option>
+                    <option value="12">12 - Magnesium</option>
+                    <option value="13">13 - Aluminium</option>
+                    <option value="14">14 - Silicon</option>
+                    <option value="15">15 - Phosphorus</option>
+                    <option value="16">16 - Sulfur</option>
+                    <option value="17">17 - Chlorine</option>
+                    <option value="18">18 - Argon</option>
+                    <option value="19">19 - Potassium</option>
+                    <option value="20">20 - Calcium</option>
+                    <option value="21">21 - Scandium</option>
+                    <option value="22">22 - Titanium</option>
+                    <option value="23">23 - Vanadium</option>
+                    <option value="24">24 - Chromium</option>
+                    <option value="25">25 - Manganese</option>
+                    <option value="26">26 - Iron</option>
+                    <option value="27">27 - Cobalt</option>
+                    <option value="28">28 - Nickel</option>
+                    <option value="29">29 - Copper</option>
+                    <option value="30">30 - Zinc</option>
+                    <option value="31">31 - Gallium</option>
+                    <option value="32">32 - Germanium</option>
+                    <option value="33">33 - Arsenic</option>
+                    <option value="34">34 - Selenium</option>
+                    <option value="35">35 - Bromine</option>
+                    <option value="36">36 - Krypton</option>
+                    <option value="37">37 - Rubidium</option>
+                    <option value="38">38 - Strontium</option>
+                    <option value="39">39 - Yttrium</option>
+                    <option value="40">40 - Zirconium</option>
+                    <option value="41">41 - Niobium</option>
+                    <option value="42">42 - Molybdenum</option>
+                    <option value="43">43 - Technetium</option>
+                    <option value="44">44 - Ruthenium</option>
+                    <option value="45">45 - Rhodium</option>
+                    <option value="46">46 - Palladium</option>
+                    <option value="47">47 - Silver</option>
+                    <option value="48">48 - Cadmium</option>
+                    <option value="49">49 - Indium</option>
+                    <option value="50">50 - Tin</option>
+                    <option value="51">51 - Antimony</option>
+                    <option value="52">52 - Tellurium</option>
+                    <option value="53">53 - Iodine</option>
+                    <option value="54">54 - Xenon</option>
+                    <option value="55">55 - Cesium</option>
+                    <option value="56">56 - Barium</option>
+                    <option value="57">57 - Lanthanum</option>
+                    <option value="58">58 - Cerium</option>
+                    <option value="59">59 - Praseodymium</option>
+                    <option value="60">60 - Neodymium</option>
+                    <option value="61">61 - Promethium</option>
+                    <option value="62">62 - Samarium</option>
+                    <option value="63">63 - Europium</option>
+                    <option value="64">64 - Gadolinium</option>
+                    <option value="65">65 - Terbium</option>
+                    <option value="66">66 - Dysprosium</option>
+                    <option value="67">67 - Holmium</option>
+                    <option value="68">68 - Erbium</option>
+                    <option value="69">69 - Thulium</option>
+                    <option value="70">70 - Ytterbium</option>
+                    <option value="71">71 - Lutetium</option>
+                    <option value="72">72 - Hafnium</option>
+                    <option value="73">73 - Tantalum</option>
+                    <option value="74">74 - Tungsten</option>
+                    <option value="75">75 - Rhenium</option>
+                    <option value="76">76 - Osmium</option>
+                    <option value="77">77 - Iridium</option>
+                    <option value="78">78 - Platinum</option>
+                    <option value="79">79 - Gold</option>
+                    <option value="80">80 - Mercury</option>
+                    <option value="81">81 - Thallium</option>
+                    <option value="82">82 - Lead</option>
+                    <option value="83">83 - Bismuth</option>
+                    <option value="84">84 - Polonium</option>
+                    <option value="85">85 - Astatine</option>
+                    <option value="86">86 - Radon</option>
+                    <option value="87">87 - Francium</option>
+                    <option value="88">88 - Radium</option>
+                    <option value="89">89 - Actinium</option>
+                    <option value="90">90 - Thorium</option>
+                    <option value="91">91 - Protactinium</option>
+                    <option value="92">92 - Uranium</option>
+                    <option value="93">93 - Neptunium</option>
+                    <option value="94">94 - Plutonium</option>
+                    <option value="95">95 - Americium</option>
+                    <option value="96">96 - Curium</option>
+                    <option value="97">97 - Berkelium</option>
+                    <option value="98">98 - Californium</option>
+                    <option value="99">99 - Einsteinium</option>
+                    <option value="100">100 - Fermium</option>
+                    <option value="101">101 - Mendelevium</option>
+                    <option value="102">102 - Nobelium</option>
+                    <option value="103">103 - Lawrencium</option>
+                    <option value="104">104 - Rutherfordium</option>
+                    <option value="105">105 - Dubnium</option>
+                    <option value="106">106 - Seaborgium</option>
+                    <option value="107">107 - Bohrium</option>
+                    <option value="108">108 - Hassium</option>
+                    <option value="109">109 - Meitnerium</option>
+                    <option value="110">110 - Darmstadtium</option>
+                    <option value="111">111 - Roentgenium</option>
+                    <option value="112">112 - Copernicium</option>
+                    <option value="113">113 - Nihonium</option>
+                    <option value="114">114 - Flerovium</option>
+                    <option value="115">115 - Moscovium</option>
+                    <option value="116">116 - Livermorium</option>
+                    <option value="117">117 - Tennessine</option>
+                    <option value="118">118 - Oganesson</option>                    
+                </select>
+            </div>
+            <br><br>
+            <div class="container">
+                <label id="ele-summary"></label>
+            </div>
+            <br><br>
+            <div class="container">
+                
+            </div>
+            <br><br>
+            <div>
+                <table id="ele-table" hidden>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4" colspan="2">
+                                <model-viewer camera-controls id= "ele-model" alt="" hidden 
+                                src="https://storage.googleapis.com/search-ar-edu/periodic-table/element_001_hydrogen/element_001_hydrogen.glb">
+                                </model-viewer>
+                            </td>
+                            <td>Name</td>
+                            <td id="ele-name"></td>
+                        </tr>
+                        <tr>
+                            <td>Symbol</td>
+                            <td id="ele-symbol"></td>
+                        </tr>
+                        <tr>
+                            <td>Atomic Number</td>
+                            <td id="ele-z"></td>
+                        </tr>
+                        <tr>
+                            <td>Atomic Mass</td>
+                            <td id="ele-atomic-mass"></td>
+                        </tr>
+                        <tr>
+                            <td>Chemical Category</td>
+                            <td id="ele-category"></td>
+                            <td>Standard State</td>
+                            <td id="ele-state"></td>
+                        </tr>
+                        <tr>
+                            <td>Melting Point</td>
+                            <td id="ele-melting-point"></td>
+                            <td>Boiling Point</td>
+                            <td id="ele-boiling-point"></td>
+                        </tr>
+                        <tr>
+                            <td>Electron Configuration</td>
+                            <td id="ele-electronic-configuration"></td>    
+                            <td>Year of Discovery</td>
+                            <td id="ele-year"></td>
+                        </tr>
+                        <tr>
+                            <td>Ionization Energy</td>
+                            <td id="ele-ionization-energy"></td>    
+                            <td>Earth Crust Abundance</td>
+                            <td id="ele-abundance"></td>
+                        </tr>
+                        <tr>
+                            <td>Element Color</td>
+                            <td id="ele-color"></td>    
+                            <td>Element Block</td>
+                            <td id="ele-block"></td>
+                        </tr>
+                        <tr>
+                            <td>Element Density</td>
+                            <td id="ele-density"></td>    
+                            <td>Earth Valence</td>
+                            <td id="ele-valence"></td>
+                        </tr>
+                        <tr>
+                            <td>Electron Affinity</td>
+                            <td id="ele-affinity"></td>    
+                            <td>Electronegativity (Pauling)</td>
+                            <td id="ele-negativity"></td>
+                        </tr>
+                        <tr>
+                            <td>Country of Discovery</td>
+                            <td id="ele-country"></td>    
+                            <td>Discovered By</td>
+                            <td id="ele-discovered"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>  
+            <br><br>
+        </div>
+        
+           
     </body>
 </html>
